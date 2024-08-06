@@ -27,6 +27,15 @@
 
 #define STICKY_KEY_TIMEOUT 1000
 
+#define RED_H 340
+#define RED_S 82
+#define YELLOW_H 70
+#define YELLOW_S 100
+#define GREEN_H 160
+#define GREEN_S 100
+#define VIOLET_H 250
+#define VIOLET_S 100
+
 // Not-so-sticky key, see nk behavior def below
 #define SK(KEY) &nk KEY KEY
 
@@ -54,10 +63,10 @@
             tap-ms = <0>;
             bindings
             = <&macro_press &mo SYM_L>
-            , <&macro_tap &rgb_ug RGB_COLOR_HSB(300, 100, 50)>
+            , <&macro_tap &rgb_ug RGB_COLOR_HSB(RED_H, 50, 100)>
             , <&macro_pause_for_release>
             , <&macro_release &mo SYM_L>
-            , <&macro_tap &rgb_ug RGB_COLOR_HSB(128, 100, 10)>
+            , <&macro_tap &rgb_ug RGB_COLOR_HSB(GREEN_H, GREEN_S, 50)>
             ;
         };
 
@@ -69,30 +78,17 @@
             tap-ms = <0>;
             bindings
             = <&macro_press &mo NAV_L>
-            , <&macro_tap &rgb_ug RGB_COLOR_HSB(35, 100, 4)>
+            , <&macro_tap &rgb_ug RGB_COLOR_HSB(YELLOW_H, 25, 100)>
             , <&macro_pause_for_release>
             , <&macro_release &mo NAV_L>
-            , <&macro_tap &rgb_ug RGB_COLOR_HSB(128, 100, 10)>
+            , <&macro_tap &rgb_ug RGB_COLOR_HSB(GREEN_H, GREEN_S, 50)>
             ;
         };
     };
 
     combos {
         compatible = "zmk,combos";
-        /* Top corners (Q+P) = bootloader */
-        combo_boot {
-            key-positions = <0 9>;
-            bindings = <&bootloader>;
-        };
-        rgb_mode {
-            key-positions = <0 8>;
-            bindings = <&rgb_ug RGB_EFF>;
-        };
-        /* Bottom corners (Z+/) = RGB toggle */
-        combo_rgb_tog {
-            key-positions = <20 29>;
-            bindings = <&rgb_ug RGB_TOG>;
-        };
+
         vlbkt { key-positions = <1 11>; bindings = <&kp LBKT>; layers = <NON_SYS_LAYERS>; require-prior-idle-ms = <COMBO_IDLE>; };
         vlpar { key-positions = <2 12>; bindings = <&kp LPAR>; layers = <NON_SYS_LAYERS>; require-prior-idle-ms = <COMBO_IDLE>; };
         vlbrc { key-positions = <3 13>; bindings = <&kp LBRC>; layers = <NON_SYS_LAYERS>; require-prior-idle-ms = <COMBO_IDLE>; };
@@ -100,7 +96,7 @@
         vrpar { key-positions = <7 17>; bindings = <&kp RPAR>; layers = <NON_SYS_LAYERS>; require-prior-idle-ms = <COMBO_IDLE>; };
         vrbkt { key-positions = <8 18>; bindings = <&kp RBKT>; layers = <NON_SYS_LAYERS>; require-prior-idle-ms = <COMBO_IDLE>; };
 
-        // cw  { key-positions = <20 29>; bindings = <&kp CAPSLOCK>; layers = <DEF_L>; timeout-ms = <100>; };
+        cw  { key-positions = <20 29>; bindings = <&kp CAPSLOCK>; layers = <DEF_L>; timeout-ms = <100>; };
 
         esc { key-positions = <11 12 13>; bindings = <&kp ESC>; layers = <DEF_L>; };
         ret { key-positions = <16 17 18>; bindings = <&kp RET>; layers = <DEF_L>; };
@@ -131,15 +127,15 @@
                 &kp SQT    &kp COMMA  &kp DOT   &kp P      &kp Y     &kp F     &kp G     &kp C     &kp R     &kp L
                 &kp A      &kp O      &kp E     &kp U      &kp I     &kp D     &kp H     &kp T     &kp N     &kp S
                 &kp SEMI   &kp Q      &kp J     &kp K      &kp X     &kp B     &kp M     &kp W     &kp V     &kp Z
-                                                &kp BSPC   &layer_nav &layer_sym  &kp SPACE
+                                                &sk LSHFT   &layer_nav &layer_sym  &kp SPACE
             >;
         };
 
         sym_layer {
             bindings = <
                 &kp ESC    &none      &none       &none           &kp TILDE     &kp CARET       &none          &none       &none     &kp GRAVE
-                &kp MINUS  &kp STAR   &kp EQUAL   &kp UNDER       &kp PIPE      &kp BSLH        &sk RSHFT      &sk RCMD    &sk RALT   &sk RCTRL
-                &kp PLUS   &kp DLLR   &kp AT      &kp FSLH        &kp PRCNT     &trans          &kp BSLH       &kp AMPS    &kp QMARK  &kp EXCL
+                &kp MINUS  &kp STAR   &kp EQUAL   &kp UNDER       &kp DLLR      &kp HASH        &sk RSHFT      &sk RCMD    &sk RALT   &sk RCTRL
+                &kp PLUS   &kp PIPE   &kp AT      &kp FSLH        &kp PRCNT     &trans          &kp BSLH       &kp AMPS    &kp QMARK  &kp EXCL
                                                   &trans          &trans        &trans          &trans
             >;
         };
