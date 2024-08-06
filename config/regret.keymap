@@ -46,7 +46,7 @@
     };
 
     macros {
-    layer_sym: layer_sym {
+        layer_sym: layer_sym {
             label = "sym layer color";
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
@@ -83,6 +83,10 @@
         combo_boot {
             key-positions = <0 9>;
             bindings = <&bootloader>;
+        };
+        rgb_mode {
+            key-positions = <0 8>;
+            bindings = <&rgb_ug RGB_EFF>;
         };
         /* Bottom corners (Z+/) = RGB toggle */
         combo_rgb_tog {
