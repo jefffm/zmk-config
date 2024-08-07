@@ -45,6 +45,10 @@
     quick-release;
 };
 
+&caps_word {
+    continue-list = <UNDERSCORE MINUS>;
+};
+
 / {
     behaviors {
         td_boot: double_tap_bootloader {
@@ -89,6 +93,7 @@
 
     combos {
         compatible = "zmk,combos";
+        cw  { key-positions = <0 9>; bindings = <&caps_word>; layers = <DEF_L>; timeout-ms = <100>; };
 
         vlbkt { key-positions = <1 11>; bindings = <&kp LBKT>; layers = <NON_SYS_LAYERS>; require-prior-idle-ms = <COMBO_IDLE>; };
         vlpar { key-positions = <2 12>; bindings = <&kp LPAR>; layers = <NON_SYS_LAYERS>; require-prior-idle-ms = <COMBO_IDLE>; };
@@ -97,7 +102,7 @@
         vrpar { key-positions = <7 17>; bindings = <&kp RPAR>; layers = <NON_SYS_LAYERS>; require-prior-idle-ms = <COMBO_IDLE>; };
         vrbkt { key-positions = <8 18>; bindings = <&kp RBKT>; layers = <NON_SYS_LAYERS>; require-prior-idle-ms = <COMBO_IDLE>; };
 
-        cw  { key-positions = <20 29>; bindings = <&kp CAPSLOCK>; layers = <DEF_L>; timeout-ms = <100>; };
+        caps  { key-positions = <20 29>; bindings = <&kp CAPSLOCK>; layers = <DEF_L>; timeout-ms = <100>; };
 
         esc { key-positions = <11 12 13>; bindings = <&kp ESC>; layers = <DEF_L>; };
         ret { key-positions = <16 17 18>; bindings = <&kp RET>; layers = <DEF_L>; };
