@@ -12,8 +12,9 @@
 #define NAV_L 2
 #define NUM_L 3
 #define SYS_L 4
+#define GAME_L 5
 
-#define NON_SYS_LAYERS DEF_L SYM_L NAV_L NUM_L
+#define NON_SYS_LAYERS DEF_L SYM_L NAV_L NUM_L GAME_L
 
 // How long a key must be pressed to trigger Hold behavior
 #define HRM_TERM 280
@@ -160,11 +161,21 @@
 
         system_layer {
             bindings = <
-                &bootloader &none &none    &none    &none    &rgb_ug RGB_TOG &none        &none        &none      &none
+                &bootloader &tog GAME_L &none    &none    &none    &rgb_ug RGB_TOG &none        &none        &none      &none
                 &kp LCTRL  &kp LALT   &kp LCMD &kp LSHFT &none   &kp C_PREV      &kp C_VOL_DN &kp C_VOL_UP &kp C_NEXT &none
                 &bt BT_CLR &none      &none    &none    &none    &none           &kp C_PP     &none        &none      &none
                                                &trans   &trans    &trans          &trans
             >;
         };
+
+        game_layer {
+            bindings = <
+                &none      &kp Q      &kp W     &kp E      &kp R     &kp LSHFT  &kp ENTER     &kp UP     &kp R     &to DEF_L
+                &none      &kp A      &kp S     &kp D      &kp F     &none      &kp LEFT      &kp DOWN   &kp RIGHT &kp S
+                &none      &kp Z      &kp X     &kp C      &kp V     &none      &none         &none      &none     &none
+                                                &trans   &trans    &trans          &trans
+            >;
+        };
+
     };
 };
