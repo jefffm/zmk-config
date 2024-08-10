@@ -139,7 +139,7 @@
 
         sym_layer {
             bindings = <
-                &kp ESC    &none      &none       &none           &kp TILDE     &kp CARET       &none          &none       &none     &kp GRAVE
+                &kp ESC    &none      &none       &none           &kp TILDE     &kp CARET       &none          &none       &none      &kp GRAVE
                 &kp MINUS  &kp STAR   &kp EQUAL   &kp UNDER       &kp DLLR      &kp HASH        &sk RSHFT      &sk RCMD    &sk RALT   &sk RCTRL
                 &kp PLUS   &kp PIPE   &kp AT      &kp FSLH        &kp PRCNT     &trans          &kp BSLH       &kp AMPS    &kp QMARK  &kp EXCL
                                                   &trans          &trans        &trans          &trans
@@ -148,10 +148,10 @@
 
         nav_layer {
             bindings = <
-                &trans      &trans      &trans      &trans         &trans       &kp TAB           &kp HOME         &kp UP      &kp END      &trans
-                &sk LCTRL   &sk LALT    &sk LCMD       &sk LSHFT       &kp BSPC        &none       &kp LEFT       &kp DOWN      &kp RIGHT  &none
-                &kp LG(Z)   &kp LG(X)   &kp LG(C)      &kp LG(V)          &kp RET         &kp RET     &kp PG_DN       &kp TAB     &kp PG_UP     &trans
-                                                     &trans          &trans          &trans   &trans
+                &trans      &trans      &trans      &trans         &trans       &kp TAB    &kp HOME     &kp UP      &kp END    &trans
+                &sk LCTRL   &sk LALT    &sk LCMD    &sk LSHFT      &kp BSPC     &none      &kp LEFT     &kp DOWN    &kp RIGHT  &none
+                &kp LG(Z)   &kp LG(X)   &kp LG(C)   &kp LG(V)      &kp RET      &kp RET    &kp PG_DN    &kp TAB     &kp PG_UP  &trans
+                                                    &trans         &trans       &trans     &trans
             >;
         };
 
@@ -166,10 +166,10 @@
 
         system_layer {
             bindings = <
-                &bootloader &tog GAME_L &none    &none    &none    &rgb_ug RGB_TOG &none        &none        &none      &none
-                &kp LCTRL  &kp LALT   &kp LCMD &kp LSHFT &none   &kp C_PREV      &kp C_VOL_DN &kp C_VOL_UP &kp C_NEXT &none
-                &bt BT_CLR &none      &none    &none    &none    &none           &kp C_PP     &none        &none      &none
-                                               &trans   &trans    &trans          &trans
+                &bootloader &tog GAME_L &none    &none      &none    &rgb_ug RGB_TOG &none        &none        &none      &none
+                &kp LCTRL   &kp LALT    &kp LCMD &kp LSHFT  &none    &kp C_PREV      &kp C_VOL_DN &kp C_VOL_UP &kp C_NEXT &none
+                &bt BT_CLR  &none       &none    &none      &none    &none           &kp C_PP     &none        &none      &none
+                                                 &trans     &trans   &trans          &trans
             >;
         };
 
@@ -178,7 +178,7 @@
                 &none      &kp Q      &kp W     &kp E      &kp R     &kp LSHFT  &kp ENTER     &kp UP     &kp R     &to DEF_L
                 &none      &kp A      &kp S     &kp D      &kp F     &none      &kp LEFT      &kp DOWN   &kp RIGHT &kp S
                 &none      &kp Z      &kp X     &kp C      &kp V     &none      &none         &none      &none     &none
-                                                &trans   &trans    &trans          &trans
+                                                &trans   &trans    &trans       &trans
             >;
         };
 
