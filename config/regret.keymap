@@ -159,7 +159,7 @@
 		
 		nav_layer {
 			bindings = <
-			&trans      &swap       &none       &kp LC(LG(LS(4)))         &trans       &kp TAB    &kp HOME     &kp UP      &kp END    &trans
+			&trans      &swap       &none       &kp LC(LG(LS(N4)))         &trans       &kp TAB    &kp HOME     &kp UP      &kp END    &trans
 			&sk LCTRL   &sk LALT    &sk LCMD    &sk LSHFT      &kp BSPC     &kp DELETE &kp LEFT     &kp DOWN    &kp RIGHT  &none
 			&kp LG(Z)   &kp LG(X)   &kp LG(C)   &kp LG(V)      &kp RET      &kp RET    &kp PG_DN    &kp TAB     &kp PG_UP  &trans
 			&trans         &trans       &trans     &trans
