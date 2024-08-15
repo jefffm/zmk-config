@@ -47,10 +47,6 @@
 	quick-release;
 };
 
-&caps_word {
-	continue-list = <UNDERSCORE MINUS>;
-};
-
 / {
 	behaviors {
 		td_boot: double_tap_bootloader {
