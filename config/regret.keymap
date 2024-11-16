@@ -39,6 +39,40 @@
 #define VIOLET_H 250
 #define VIOLET_S 100
 
+// // macOS mode
+// #define LGC LG
+// #define LGorC LCMD
+// #define LGorA LCMD
+// #define SSHOT LC(LG(LS(N4)))
+
+// #define MOD_1 LCTRL
+// #define MOD_2 LALT
+// #define MOD_3 LCMD
+// #define MOD_4 LSHFT
+
+// #define MOD_5 RSHFT
+// #define MOD_6 RCMD
+// #define MOD_7 RALT
+// #define MOD_8 RCTRL
+// // end macOS mode
+
+// Windows mode
+#define LGC LC
+#define LGorC LCTRL
+#define LGorA LALT
+#define SSHOT LG(LS(S))
+
+#define MOD_1 LCMD
+#define MOD_2 LALT
+#define MOD_3 LCTRL
+#define MOD_4 LSHFT
+
+#define MOD_5 RSHFT
+#define MOD_6 RCTRL
+#define MOD_7 RALT
+#define MOD_8 RCMD
+// end Windows mode
+
 // Not-so-sticky key, see nk behavior def below
 #define SK(KEY) &nk KEY KEY
 
@@ -59,7 +93,7 @@
 		swap: swapper {
 			compatible = "zmk,behavior-tri-state";
 			#binding-cells = <0>;
-			bindings = <&kt LCMD>, <&kp TAB>, <&kt LCMD>;
+			bindings = <&kt LGorA>, <&kp TAB>, <&kt LGorA>;
 			// 0 is Q, 32 is shift
 			ignored-key-positions = <0 32>;
 		};
@@ -114,7 +148,7 @@
 	esc { key-positions = <11 12 13>; bindings = <&kp ESC>; layers = <DEF_L>; };
 	ret { key-positions = <16 17 18>; bindings = <&kp RET>; layers = <DEF_L>; };
 		
-	sall { key-positions = <21 22>; bindings = <&kp LG(A)>; layers = <NAV_L>; };
+	sall { key-positions = <21 22>; bindings = <&kp LGorC(A)>; layers = <NAV_L>; };
 		
 		/* Activate system layer on inner thumb press */
 		sys {
@@ -147,25 +181,27 @@
 		sym_layer {
 			bindings = <
 			&kp ESC    &none      &none       &none           &kp TILDE     &kp CARET       &none          &none       &none      &kp GRAVE
-			&kp MINUS  &kp STAR   &kp EQUAL   &kp UNDER       &kp DLLR      &kp HASH        &sk RSHFT      &sk RCMD    &sk RALT   &sk RCTRL
+			&kp MINUS  &kp STAR   &kp EQUAL   &kp UNDER       &kp DLLR      &kp HASH        &sk MOD_5      &sk MOD_6    &sk MOD_7   &sk MOD_8
 			&kp PLUS   &kp PIPE   &kp AT      &kp FSLH        &kp PRCNT     &trans          &kp BSLH       &kp AMPS    &kp QMARK  &kp EXCL
 			&trans          &trans        &trans          &trans
 			>;
 		};
 		
+		// TODO: map thumb left
 		nav_layer {
 			bindings = <
-			&trans      &swap       &none       &kp LC(LG(LS(N4)))         &trans       &kp TAB    &kp HOME     &kp UP      &kp END    &trans
-			&sk LCTRL   &sk LALT    &sk LCMD    &sk LSHFT      &kp BSPC     &kp DELETE &kp LEFT     &kp DOWN    &kp RIGHT  &none
-			&kp LG(Z)   &kp LG(X)   &kp LG(C)   &kp LG(V)      &kp RET      &kp RET    &kp PG_DN    &kp TAB     &kp PG_UP  &trans
+			&none      &swap       &none       &kp SSHOT        &none       &kp TAB    &kp HOME     &kp UP      &kp END    &none
+			&sk MOD_1   &sk MOD_2    &sk MOD_3    &sk MOD_4      &kp BSPC     &kp DELETE &kp LEFT     &kp DOWN    &kp RIGHT  &none
+			&kp LG(Z)   &kp LG(X)   &kp LG(C)   &kp LG(V)      &kp RET      &kp RET    &kp PG_DN    &kp TAB     &kp PG_UP  &none
 			&trans         &trans       &trans     &trans
 			>;
 		};
 		
+		// TODO: map thumb right
 		num_layer {
 			bindings = <
 			&kp N1     &kp N2   &kp N3      &kp N4          &kp N5        &kp N6      &kp N7         &kp N8      &kp N9     &kp N0
-			&sk LCTRL  &sk LALT &sk LCMD    &sk LSHFT       &kp F7        &kp F8      &sk RSHFT      &sk RCMD    &sk RALT   &sk RCTRL
+			&sk MOD_1  &sk MOD_2 &sk MOD_3    &sk MOD_4       &kp F7        &kp F8      &sk MOD_5      &sk MOD_6    &sk MOD_7   &sk MOD_8
 			&kp F1     &kp F2   &kp F3      &kp F4          &kp F5        &kp F6      &kp F9         &kp F10     &kp F11    &kp F12
 			&trans          &trans        &trans      &trans
 			>;
@@ -174,7 +210,7 @@
 		system_layer {
 			bindings = <
 			&bootloader &tog GAME_L &none    &none      &none    &rgb_ug RGB_TOG &kp C_PP        &none        &none      &none
-			&kp LCTRL   &kp LALT    &kp LCMD &kp LSHFT  &none    &kp C_PREV      &kp C_VOL_DN &kp C_VOL_UP &kp C_NEXT &none
+			&kp MOD_1   &kp MOD_2    &kp MOD_3 &kp MOD_4  &none    &kp C_PREV      &kp C_VOL_DN &kp C_VOL_UP &kp C_NEXT &none
 			&bt BT_CLR  &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2   &none &none &bt BT_DISC 2    &bt BT_DISC 1  &bt BT_DISC 0 &none
 			&trans     &trans   &trans          &trans
 			>;
