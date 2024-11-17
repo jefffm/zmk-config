@@ -81,6 +81,8 @@
 	quick-release;
 };
 
+
+
 / {
 	behaviors {
 		td_boot: double_tap_bootloader {
@@ -129,6 +131,9 @@
 			, <&macro_tap &rgb_ug RGB_COLOR_HSB(GREEN_H, GREEN_S, 50)>
 			;
 		};
+		
+		// |>
+		ZMK_MACRO(hackpipe, bindings = <&kp PIPE &kp GT &kp SPACE>;)
 	};
 	
 	combos {
@@ -182,7 +187,7 @@
 			bindings = <
 			&kp ESC    &none      &none       &none           &kp TILDE     &kp CARET       &none          &none       &none      &kp GRAVE
 			&kp MINUS  &kp STAR   &kp EQUAL   &kp UNDER       &kp DLLR      &kp HASH        &sk MOD_5      &sk MOD_6    &sk MOD_7   &sk MOD_8
-			&kp PLUS   &kp PIPE   &kp AT      &kp FSLH        &kp PRCNT     &trans          &kp BSLH       &kp AMPS    &kp QMARK  &kp EXCL
+			&kp PLUS   &kp PIPE   &kp AT      &kp FSLH        &kp PRCNT     &hackpipe          &kp BSLH       &kp AMPS    &kp QMARK  &kp EXCL
 			&trans          &trans        &trans          &trans
 			>;
 		};
