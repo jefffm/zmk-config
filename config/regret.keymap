@@ -148,87 +148,90 @@
 	vrpar { key-positions = <7 17>; bindings = <&kp RPAR>; layers = <NON_SYS_LAYERS>; require-prior-idle-ms = <COMBO_IDLE>; };
 	vrbkt { key-positions = <8 18>; bindings = <&kp RBKT>; layers = <NON_SYS_LAYERS>; require-prior-idle-ms = <COMBO_IDLE>; };
 		
-	caps  { key-positions = <20 29>; bindings = <&kp CAPSLOCK>; layers = <DEF_L>; timeout-ms = <100>; };
-		
-	esc { key-positions = <11 12 13>; bindings = <&kp ESC>; layers = <DEF_L>; };
-	ret { key-positions = <16 17 18>; bindings = <&kp RET>; layers = <DEF_L>; };
-		
-	sall { key-positions = <21 22>; bindings = <&kp LGorC(A)>; layers = <NAV_L>; };
-		
-		/* Activate system layer on inner thumb press */
-		sys {
-			key-positions = <30 33>;
-			bindings = <&mo SYS_L>;
-			require-prior-idle-ms = <COMBO_IDLE>;
-		};
+lshftc { key-positions = <12 13>; bindings = <&sk LSHFT>; layers = <NON_SYS_LAYERS>; require-prior-idle-ms = <COMBO_IDLE>; };}
+rshftc { key-positions = <16 17>; bindings = <&sk RSHFT>; layers = <NON_SYS_LAYERS>; require-prior-idle-ms = <COMBO_IDLE>; };}
+	
+caps  { key-positions = <20 29>; bindings = <&kp CAPSLOCK>; layers = <DEF_L>; timeout-ms = <100>; };
+	
+esc { key-positions = <11 12 13>; bindings = <&kp ESC>; layers = <DEF_L>; };
+ret { key-positions = <16 17 18>; bindings = <&kp RET>; layers = <DEF_L>; };
+	
+sall { key-positions = <21 22>; bindings = <&kp LGorC(A)>; layers = <NAV_L>; };
+	
+	/* Activate system layer on inner thumb press */
+	sys {
+		key-positions = <30 33>;
+		bindings = <&mo SYS_L>;
+		require-prior-idle-ms = <COMBO_IDLE>;
+	};
+};
+
+conditional_layers {
+	compatible = "zmk,conditional-layers";
+	tri_layer {
+		if-layers = <SYM_L NAV_L>;
+		then-layer = <NUM_L>;
+	};
+};
+
+keymap {
+	compatible = "zmk,keymap";
+	
+	default_layer {
+		bindings = <
+		&kp SQT    &kp COMMA  &kp DOT   &kp P      &kp Y     &kp F     &kp G     &kp C     &kp R     &kp L
+		&kp A      &kp O      &kp E     &kp U      &kp I     &kp D     &kp H     &kp T     &kp N     &kp S
+		&kp SEMI   &kp Q      &kp J     &kp K      &kp X     &kp B     &kp M     &kp W     &kp V     &kp Z
+		&sk LSHFT   &layer_nav &layer_sym  &kp SPACE
+		>;
 	};
 	
-	conditional_layers {
-		compatible = "zmk,conditional-layers";
-		tri_layer {
-			if-layers = <SYM_L NAV_L>;
-			then-layer = <NUM_L>;
-		};
+	sym_layer {
+		bindings = <
+		&kp ESC    &none      &none       &none           &kp TILDE     &kp CARET       &none          &none       &none      &kp GRAVE
+		&kp MINUS  &kp STAR   &kp EQUAL   &kp UNDER       &kp DLLR      &kp HASH        &sk MOD_5      &sk MOD_6   &sk MOD_7  &sk MOD_8
+		&kp PLUS   &kp PIPE   &kp AT      &kp FSLH        &kp PRCNT     &hackpipe       &kp BSLH       &kp AMPS    &kp QMARK  &kp EXCL
+		&trans          &trans        &trans          &trans
+		>;
 	};
 	
-	keymap {
-		compatible = "zmk,keymap";
-		
-		default_layer {
-			bindings = <
-			&kp SQT    &kp COMMA  &kp DOT   &kp P      &kp Y     &kp F     &kp G     &kp C     &kp R     &kp L
-			&kp A      &kp O      &kp E     &kp U      &kp I     &kp D     &kp H     &kp T     &kp N     &kp S
-			&kp SEMI   &kp Q      &kp J     &kp K      &kp X     &kp B     &kp M     &kp W     &kp V     &kp Z
-			&sk LSHFT   &layer_nav &layer_sym  &kp SPACE
-			>;
-		};
-		
-		sym_layer {
-			bindings = <
-			&kp ESC    &none      &none       &none           &kp TILDE     &kp CARET       &none          &none       &none      &kp GRAVE
-			&kp MINUS  &kp STAR   &kp EQUAL   &kp UNDER       &kp DLLR      &kp HASH        &sk MOD_5      &sk MOD_6    &sk MOD_7   &sk MOD_8
-			&kp PLUS   &kp PIPE   &kp AT      &kp FSLH        &kp PRCNT     &hackpipe          &kp BSLH       &kp AMPS    &kp QMARK  &kp EXCL
-			&trans          &trans        &trans          &trans
-			>;
-		};
-		
-		// TODO: map thumb left
-		nav_layer {
-			bindings = <
-			&none      &swap       &none       &kp SSHOT        &none       &kp TAB    &kp HOME     &kp UP      &kp END    &none
-			&sk MOD_1   &sk MOD_2    &sk MOD_3    &sk MOD_4      &kp BSPC     &kp DELETE &kp LEFT     &kp DOWN    &kp RIGHT  &none
-			&kp LGC(Z)   &kp LGC(X)   &kp LGC(C)   &kp LGC(V)      &kp RET      &kp RET    &kp PG_DN    &kp TAB     &kp PG_UP  &none
-			&trans         &trans       &trans     &trans
-			>;
-		};
-		
-		// TODO: map thumb right
-		num_layer {
-			bindings = <
-			&kp N1     &kp N2   &kp N3      &kp N4          &kp N5        &kp N6      &kp N7         &kp N8      &kp N9     &kp N0
-			&sk MOD_1  &sk MOD_2 &sk MOD_3    &sk MOD_4       &kp F7        &kp F8      &sk MOD_5      &sk MOD_6    &sk MOD_7   &sk MOD_8
-			&kp F1     &kp F2   &kp F3      &kp F4          &kp F5        &kp F6      &kp F9         &kp F10     &kp F11    &kp F12
-			&trans          &trans        &trans      &trans
-			>;
-		};
-		
-		system_layer {
-			bindings = <
-			&bootloader &tog GAME_L &none    &none      &none    &rgb_ug RGB_TOG &kp C_PP        &none        &none      &none
-			&kp MOD_1   &kp MOD_2    &kp MOD_3 &kp MOD_4  &none    &kp C_PREV      &kp C_VOL_DN &kp C_VOL_UP &kp C_NEXT &none
-			&bt BT_CLR  &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2   &none &none &bt BT_DISC 2    &bt BT_DISC 1  &bt BT_DISC 0 &none
-			&trans     &trans   &trans          &trans
-			>;
-		};
-		
-		game_layer {
-			bindings = <
-			&none      &kp Q      &kp W     &kp E      &kp R     &kp LSHFT  &kp ENTER     &kp UP     &kp R     &to DEF_L
-			&none      &kp A      &kp S     &kp D      &kp F     &none      &kp LEFT      &kp DOWN   &kp RIGHT &kp S
-			&none      &kp Z      &kp X     &kp C      &kp V     &none      &none         &none      &none     &none
-			&trans   &trans    &trans       &trans
-			>;
-		};
-		
+	// TODO: map thumb left
+	nav_layer {
+		bindings = <
+		&none      &swap       &none       &kp SSHOT      &none     &kp TAB    &kp HOME    &kp UP      &kp END    &none
+		&sk MOD_1  &sk MOD_2   &sk MOD_3   &sk MOD_4      &kp BSPC  &kp DELETE &kp LEFT    &kp DOWN    &kp RIGHT  &none
+		&kp LGC(Z) &kp LGC(X)  &kp LGC(C)  &kp LGC(V)     &kp RET   &kp RET    &kp PG_DN   &kp TAB     &kp PG_UP  &none
+		&trans         &trans       &trans     &trans
+		>;
 	};
+	
+	// TODO: map thumb right
+	num_layer {
+		bindings = <
+		&kp N1     &kp N2   &kp N3      &kp N4          &kp N5     &kp N6      &kp N7         &kp N8      &kp N9     &kp N0
+		&sk MOD_1  &sk MOD_2 &sk MOD_3  &sk MOD_4       &kp F7     &kp F8      &sk MOD_5      &sk MOD_6   &sk MOD_7  &sk MOD_8
+		&kp F1     &kp F2   &kp F3      &kp F4          &kp F5     &kp F6      &kp F9         &kp F10     &kp F11    &kp F12
+		&trans          &trans        &trans      &trans
+		>;
+	};
+	
+	system_layer {
+		bindings = <
+		&bootloader &tog GAME_L  &none        &none         &none  &rgb_ug RGB_TOG &kp C_PP      &none          &none         &none
+		&kp MOD_1   &kp MOD_2    &kp MOD_3    &kp MOD_4     &none  &kp C_PREV      &kp C_VOL_DN  &kp C_VOL_UP   &kp C_NEXT    &none
+		&bt BT_CLR  &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2  &none  &none           &bt BT_DISC 2 &bt BT_DISC 1  &bt BT_DISC 0 &none
+		&trans     &trans   &trans          &trans
+		>;
+	};
+	
+	game_layer {
+		bindings = <
+		&none      &kp Q      &kp W     &kp E      &kp R     &kp LSHFT  &kp ENTER     &kp UP     &kp R     &to DEF_L
+		&none      &kp A      &kp S     &kp D      &kp F     &none      &kp LEFT      &kp DOWN   &kp RIGHT &kp S
+		&none      &kp Z      &kp X     &kp C      &kp V     &none      &none         &none      &none     &none
+		&trans   &trans    &trans       &trans
+		>;
+	};
+	
+};
 };
