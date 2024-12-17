@@ -139,6 +139,18 @@
 			bindings = <&kp LSHIFT &kp RSHIFT &kp LCTRL &kp RCTRL &kp LALT &kp RALT &kp LGUI &kp RGUI>;
 		};
 		
+		glo: glo {
+			compatible = "zmk,behavior-macro-one-param";
+			label = "globe pseudo mod func";
+			#binding-cells = <1>;
+			bindings
+			= <&macro_press &kp GLOBE>
+			, <&macro_param_1to1>
+			, <&macro_tap &kp MACRO_PLACEHOLDER>
+			, <&macro_release &kp GLOBE>
+			;
+		};
+		
 		// |>
 		ZMK_MACRO(hackpipe, bindings = <&kp PIPE &kp GT &kp SPACE>;)
 	};
@@ -205,7 +217,7 @@
 		// TODO: map thumb left
 		nav_layer {
 			bindings = <
-			&none      &swap       &none       &kp SSHOT      &none     &kp TAB    &kp HOME    &kp UP      &kp END    &none
+			&none      &swap       &none       &kp SSHOT      &kp GLOBE     &kp TAB    &kp HOME    &kp UP      &kp END    &none
 			&sk MOD_1  &sk MOD_2   &sk MOD_3   &sk MOD_4      &kp BSPC  &kp DELETE &kp LEFT    &kp DOWN    &kp RIGHT  &none
 			&kp LGC(Z) &kp LGC(X)  &kp LGC(C)  &kp LGC(V)     &kp RET   &kp RET    &kp PG_DN   &kp TAB     &kp PG_UP  &none
 			&trans         &trans       &trans     &trans
@@ -216,8 +228,8 @@
 		num_layer {
 			bindings = <
 			&kp N1     &kp N2   &kp N3      &kp N4          &kp N5     &kp N6      &kp N7         &kp N8      &kp N9     &kp N0
-			&sk MOD_1  &sk MOD_2 &sk MOD_3  &sk MOD_4       &kp F7     &kp F8      &sk MOD_5      &sk MOD_6   &sk MOD_7  &sk MOD_8
-			&kp F1     &kp F2   &kp F3      &kp F4          &kp F5     &kp F6      &kp F9         &kp F10     &kp F11    &kp F12
+			&sk MOD_1  &sk MOD_2 &sk MOD_3  &sk MOD_4       &kp F6     &kp F7      &sk MOD_5      &sk MOD_6   &sk MOD_7  &sk MOD_8
+			&kp F1     &kp F2   &kp F3      &kp F4          &kp F5     &kp F8      &kp F9         &kp F10     &kp F11    &kp F12
 			&trans          &trans        &trans      &trans
 			>;
 		};
