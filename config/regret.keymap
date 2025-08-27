@@ -1,4 +1,14 @@
 // vim: set ts=4 sw=4 ft=devicetree:
+// Re-gret keymap - platform-specific definitions
+
+#ifdef CONFIG_SHIELD_REGRET_MAC
+#include "regret-mac.keymap"
+#elif CONFIG_SHIELD_REGRET_WINDOWS
+#include "regret-windows.keymap"
+#else
+// Default to Mac if no platform specified
+#include "regret-mac.keymap"
+#endif
 
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
@@ -9,6 +19,7 @@
 #define KEYS_R 5 6 7 8 9 15 16 17 18 19 25 26 27 28 29
 #define KEYS_T 30 31  32 33
 
+// Layer defines
 #define DEF_L 0
 #define SYM_L 1
 #define NAV_L 2
@@ -38,40 +49,6 @@
 #define GREEN_S 100
 #define VIOLET_H 250
 #define VIOLET_S 100
-
-// macOS mode
-#define LGC LG
-#define LGorC LCMD
-#define LGorA LCMD
-#define SSHOT LC(LG(LS(N4)))
-
-#define MOD_1 LCTRL
-#define MOD_2 LALT
-#define MOD_3 LCMD
-#define MOD_4 LSHFT
-
-#define MOD_5 RSHFT
-#define MOD_6 RCMD
-#define MOD_7 RALT
-#define MOD_8 RCTRL
-// end macOS mode
-
-// // Windows mode
-// #define LGC LC
-// #define LGorC LCTRL
-// #define LGorA LALT
-// #define SSHOT LG(LS(S))
-
-// #define MOD_1 LCMD
-// #define MOD_2 LALT
-// #define MOD_3 LCTRL
-// #define MOD_4 LSHFT
-
-// #define MOD_5 RSHFT
-// #define MOD_6 RCTRL
-// #define MOD_7 RALT
-// #define MOD_8 RCMD
-// // end Windows mode
 
 // Not-so-sticky key, see nk behavior def below
 #define SK(KEY) &nk KEY KEY
@@ -214,17 +191,17 @@
 			>;
 		};
 		
-		// TODO: map thumb left
+		// Left inner thumb held down to activate nav_layer
 		nav_layer {
 			bindings = <
-			&none      &swap       &none       &kp SSHOT      &kp GLOBE &kp TAB    &kp HOME    &kp UP      &kp END    &none
+			&none      &swap       &none       &kp SSHOT      &kp GLOBE     &kp TAB    &kp HOME    &kp UP      &kp END    &none
 			&sk MOD_1  &sk MOD_2   &sk MOD_3   &sk MOD_4      &kp BSPC  &kp DELETE &kp LEFT    &kp DOWN    &kp RIGHT  &none
-			&kp LGC(Z) &kp LGC(X)  &kp LGC(C)  &kp LGC(V)     &kp RET   &kp RET    &kp PG_UP   &kp TAB     &kp PG_DN  &none
+			&kp LGC(Z) &kp LGC(X)  &kp LGC(C)  &kp LGC(V)     &kp RET   &kp RET    &kp PG_DN   &kp TAB     &kp PG_UP  &none
 			&trans         &trans       &trans     &trans
 			>;
 		};
 		
-		// TODO: map thumb right
+		// Right inner thumb held down to activate nav_layer
 		num_layer {
 			bindings = <
 			&kp N1     &kp N2   &kp N3      &kp N4          &kp N5     &kp N6      &kp N7         &kp N8      &kp N9     &kp N0
