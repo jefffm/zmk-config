@@ -1,0 +1,21 @@
+// vim: set ts=4 sw=4 ft=devicetree:
+// Re-gret keymap for Windows
+
+#include "regret-common.keymap"
+
+// Windows mode
+#define LGC LC
+#define LGorC LCTRL
+#define LGorA LALT
+#define SSHOT LG(LS(S))
+
+#define MOD_1 LCMD
+#define MOD_2 LALT
+#define MOD_3 LCTRL
+#define MOD_4 LSHFT
+
+#define MOD_5 RSHFT
+#define MOD_6 RCTRL
+#define MOD_7 RALT
+#define MOD_8 RCMD
+// end Windows mode

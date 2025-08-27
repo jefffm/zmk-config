@@ -1,0 +1,21 @@
+// vim: set ts=4 sw=4 ft=devicetree:
+// Re-gret keymap for macOS
+
+#include "regret-common.keymap"
+
+// macOS mode
+#define LGC LG
+#define LGorC LCMD
+#define LGorA LCMD
+#define SSHOT LC(LG(LS(N4)))
+
+#define MOD_1 LCTRL
+#define MOD_2 LALT
+#define MOD_3 LCMD
+#define MOD_4 LSHFT
+
+#define MOD_5 RSHFT
+#define MOD_6 RCMD
+#define MOD_7 RALT
+#define MOD_8 RCTRL
+// end macOS mode

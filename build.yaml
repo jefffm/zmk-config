@@ -20,3 +20,9 @@
 include:
   - shield: regret
     board: seeeduino_xiao_ble
+    cmake-args: -DCONFIG_SHIELD_REGRET_MAC=y
+    artifact-name: regret-mac
+  - shield: regret
+    board: seeeduino_xiao_ble
+    cmake-args: -DCONFIG_SHIELD_REGRET_WINDOWS=y
+    artifact-name: regret-windows

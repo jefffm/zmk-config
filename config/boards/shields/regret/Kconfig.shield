@@ -1,3 +1,13 @@
 config SHIELD_REGRET
     def_bool $(shields_list_contains,regret)
     select SPI
+
+config SHIELD_REGRET_MAC
+    bool "Re-gret Mac variant"
+    default n
+    depends on SHIELD_REGRET
+
+config SHIELD_REGRET_WINDOWS
+    bool "Re-gret Windows variant"
+    default n
+    depends on SHIELD_REGRET
