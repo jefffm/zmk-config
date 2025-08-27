@@ -146,7 +146,7 @@
 			>;
 		};
 		
-		// TODO: map thumb left
+		// Left inner thumb held down to activate nav_layer
 		nav_layer {
 			bindings = <
 			&none      &swap       &none       &kp SSHOT      &kp GLOBE &kp TAB    &kp HOME    &kp UP      &kp END    &none
@@ -156,7 +156,7 @@
 			>;
 		};
 		
-		// TODO: map thumb right
+		// Right inner thumb held down to activate nav_layer
 		num_layer {
 			bindings = <
 			&kp N1     &kp N2   &kp N3      &kp N4          &kp N5     &kp N6      &kp N7         &kp N8      &kp N9     &kp N0
@@ -168,7 +168,7 @@
 		
 		system_layer {
 			bindings = <
-			&bootloader &tog GAME_L  &none        &none         &none  &rgb_ug RGB_TOG &kp C_PP      &none          &none         &unstick
+			&bootloader &tog GAME_L  &none        &none        &none  &rgb_ug RGB_TOG &kp C_PP   &none          &none         &unstick
 			&kp MOD_1  &kp MOD_2    &kp MOD_3    &kp MOD_4     &none  &kp C_PREV   &kp C_VOL_DN  &kp C_VOL_UP   &kp C_NEXT    &none
 			&none      &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2  &none  &bt BT_CLR   &bt BT_DISC 2 &bt BT_DISC 1  &bt BT_DISC 0 &none
 			&trans     &trans   &trans          &trans
