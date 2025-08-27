@@ -149,9 +149,9 @@
 		// Left inner thumb held down to activate nav_layer
 		nav_layer {
 			bindings = <
-			&none      &swap       &none       &kp SSHOT      &kp GLOBE &kp TAB    &kp HOME    &kp UP      &kp END    &none
+			&none      &swap       &none       &kp SSHOT      &kp GLOBE     &kp TAB    &kp HOME    &kp UP      &kp END    &none
 			&sk MOD_1  &sk MOD_2   &sk MOD_3   &sk MOD_4      &kp BSPC  &kp DELETE &kp LEFT    &kp DOWN    &kp RIGHT  &none
-			&kp LGC(Z) &kp LGC(X)  &kp LGC(C)  &kp LGC(V)     &kp RET   &kp RET    &kp PG_UP   &kp TAB     &kp PG_DN  &none
+			&kp LGC(Z) &kp LGC(X)  &kp LGC(C)  &kp LGC(V)     &kp RET   &kp RET    &kp PG_DN   &kp TAB     &kp PG_UP  &none
 			&trans         &trans       &trans     &trans
 			>;
 		};
