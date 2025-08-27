@@ -1,7 +1,7 @@
 // vim: set ts=4 sw=4 ft=devicetree:
 // Re-gret keymap for macOS
 
-#include "regret-common.keymap"
+#include <dt-bindings/zmk/keys.h>
 
 // macOS mode
 #define LGC LG
