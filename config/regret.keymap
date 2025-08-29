@@ -69,10 +69,20 @@
 			bindings = <&none>, <&bootloader>;
 		};
 		
+		// alt tab equivalent
 		swap: swapper {
 			compatible = "zmk,behavior-tri-state";
 			#binding-cells = <0>;
 			bindings = <&kt LGorA>, <&kp TAB>, <&kt LGorA>;
+			// 0 is Q, 32 is shift
+			ignored-key-positions = <0 32>;
+		};
+		
+		// swap windows between same app
+		win_swap: swapper {
+			compatible = "zmk,behavior-tri-state";
+			#binding-cells = <0>;
+			bindings = <&kt LGorA>, <&kp GRAVE>, <&kt LGorA>;
 			// 0 is Q, 32 is shift
 			ignored-key-positions = <0 32>;
 		};
@@ -195,7 +205,7 @@
 		// LEFT INNER thumb held
 		nav_layer {
 			bindings = <
-			&none      &swap       &none       &kp SSHOT      &kp GLOBE &kp TAB    &kp HOME    &kp UP      &kp END    &kp EMOJI
+			&none      &swap       &win_swap   &kp SSHOT      &kp GLOBE &kp TAB    &kp HOME    &kp UP      &kp END    &kp EMOJI
 			&sk MOD_1  &sk MOD_2   &sk MOD_3   &sk MOD_4      &kp BSPC  &kp DELETE &kp LEFT    &kp DOWN    &kp RIGHT  &none
 			&kp LGC(Z) &kp LGC(X)  &kp LGC(C)  &kp LGC(V)     &kp RET   &kp RET    &kp PG_DN   &kp TAB     &kp PG_UP  &none
 			&trans         &trans       &trans     &trans
