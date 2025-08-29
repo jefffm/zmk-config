@@ -6,6 +6,8 @@ manifest:
     # See https://docs.zephyrproject.org/3.2.0/develop/west/manifest.html#projects
     - name: dhruvinsh
       url-base: https://github.com/dhruvinsh
+    - name: local
+      url-base: /Users/jeff/ws/zmk-config
   projects:
     - name: zmk
       remote: zmkfirmware
@@ -14,5 +16,9 @@ manifest:
     - name: zmk-tri-state
       remote: dhruvinsh
       revision: main
+    - name: regret-shield
+      remote: local
+      revision: main
+      path: modules/regret-shield
   self:
     path: config

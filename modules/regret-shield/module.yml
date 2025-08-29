@@ -1,0 +1,9 @@
+name: regret-shield
+build:
+  cmake: zmk
+  kconfig: .
+boards:
+  - seeeduino_xiao
+  - seeeduino_xiao_ble
+shields:
+  - regret
