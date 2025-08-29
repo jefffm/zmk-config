@@ -79,7 +79,7 @@
 		};
 		
 		// swap windows between same app
-		win_swap: swapper {
+		win_swap: win_swapper {
 			compatible = "zmk,behavior-tri-state";
 			#binding-cells = <0>;
 			bindings = <&kt LGorA>, <&kp GRAVE>, <&kt LGorA>;
