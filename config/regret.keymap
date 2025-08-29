@@ -192,7 +192,7 @@
 		// L+R inner held
 		sym_layer {
 			bindings = <
-			&kp ESC   &none     &none     &none     &kp TILDE &kp CARET &none     &none     none      &kp GRAVE
+			&kp ESC   &none     &none     &none     &kp TILDE &kp CARET &none     &none     &none     &kp GRAVE
 			&kp MINUS &kp STAR  &kp EQUAL &kp UNDER &kp DLLR  &kp HASH  &sk MOD_5 &sk MOD_6 &sk MOD_7 &sk MOD_8
 			&kp PLUS  &kp PIPE  &kp AT    &kp FSLH  &kp PRCNT &hackpipe &kp BSLH  &kp AMPS  &kp QMARK &kp EXCL
 			
