@@ -8,6 +8,7 @@
 #define LGorC LCTRL
 #define LGorA LALT
 #define SSHOT LG(LS(S))
+#define EMOJI LG(DOT)
 
 #define MOD_1 LCMD
 #define MOD_2 LALT

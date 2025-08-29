@@ -8,6 +8,7 @@
 #define LGorC LCMD
 #define LGorA LCMD
 #define SSHOT LC(LG(LS(N4)))
+#define EMOJI LC(LG(SPC))
 
 #define MOD_1 LCTRL
 #define MOD_2 LALT

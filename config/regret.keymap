@@ -138,14 +138,14 @@
 	cw  { key-positions = <0 9>; bindings = <&caps_word>; layers = <DEF_L>; timeout-ms = <100>; };
 		
 	vlbkt { key-positions = <1 11>; bindings = <&kp LBKT>; layers = <NON_SYS_LAYERS>; require-prior-idle-ms = <COMBO_IDLE>; };
-	vlpar { key-positions = <2 12>; bindings = <&kp LPAR>; layers = <NON_SYS_LAYERS>; require-prior-idle-ms = <COMBO_IDLE>; };
-	vlbrc { key-positions = <3 13>; bindings = <&kp LBRC>; layers = <NON_SYS_LAYERS>; require-prior-idle-ms = <COMBO_IDLE>; };
-	vrbrc { key-positions = <6 16>; bindings = <&kp RBRC>; layers = <NON_SYS_LAYERS>; require-prior-idle-ms = <COMBO_IDLE>; };
-	vrpar { key-positions = <7 17>; bindings = <&kp RPAR>; layers = <NON_SYS_LAYERS>; require-prior-idle-ms = <COMBO_IDLE>; };
+	vlbrc { key-positions = <2 12>; bindings = <&kp LBRC>; layers = <NON_SYS_LAYERS>; require-prior-idle-ms = <COMBO_IDLE>; };
+	vlpar { key-positions = <3 13>; bindings = <&kp LPAR>; layers = <NON_SYS_LAYERS>; require-prior-idle-ms = <COMBO_IDLE>; };
+	vrpar { key-positions = <6 16>; bindings = <&kp RPAR>; layers = <NON_SYS_LAYERS>; require-prior-idle-ms = <COMBO_IDLE>; };
+	vrbrc { key-positions = <7 17>; bindings = <&kp RBRC>; layers = <NON_SYS_LAYERS>; require-prior-idle-ms = <COMBO_IDLE>; };
 	vrbkt { key-positions = <8 18>; bindings = <&kp RBKT>; layers = <NON_SYS_LAYERS>; require-prior-idle-ms = <COMBO_IDLE>; };
 		
-	lshftc { key-positions = <12 13>; bindings = <&sk LSHFT>; layers = <NON_SYS_LAYERS>; require-prior-idle-ms = <COMBO_IDLE>; };
-	rshftc { key-positions = <16 17>; bindings = <&sk RSHFT>; layers = <NON_SYS_LAYERS>; require-prior-idle-ms = <COMBO_IDLE>; };
+	lshftc { key-positions = <2 3>; bindings = <&sk LSHFT>; layers = <NON_SYS_LAYERS>; require-prior-idle-ms = <COMBO_IDLE>; };
+	rshftc { key-positions = <6 7>; bindings = <&sk RSHFT>; layers = <NON_SYS_LAYERS>; require-prior-idle-ms = <COMBO_IDLE>; };
 		
 	caps  { key-positions = <20 29>; bindings = <&kp CAPSLOCK>; layers = <DEF_L>; timeout-ms = <100>; };
 		
@@ -178,10 +178,11 @@
 			&kp SQT    &kp COMMA  &kp DOT   &kp P      &kp Y     &kp F     &kp G     &kp C     &kp R     &kp L
 			&kp A      &kp O      &kp E     &kp U      &kp I     &kp D     &kp H     &kp T     &kp N     &kp S
 			&kp SEMI   &kp Q      &kp J     &kp K      &kp X     &kp B     &kp M     &kp W     &kp V     &kp Z
-			&sk LSHFT   &layer_nav &layer_sym  &kp SPACE
+			&sk BSPC   &layer_nav &layer_sym  &kp SPACE
 			>;
 		};
 		
+		// BOTH OUTER held
 		sym_layer {
 			bindings = <
 			&kp ESC    &none      &none       &none           &kp TILDE     &kp CARET       &none          &none       &none      &kp GRAVE
@@ -191,17 +192,17 @@
 			>;
 		};
 		
-		// Left inner thumb held down to activate nav_layer
+		// LEFT INNER thumb held
 		nav_layer {
 			bindings = <
-			&none      &swap       &none       &kp SSHOT      &kp GLOBE     &kp TAB    &kp HOME    &kp UP      &kp END    &none
+			&none      &swap       &none       &kp SSHOT      &kp GLOBE &kp TAB    &kp HOME    &kp UP      &kp END    &kp EMOJI
 			&sk MOD_1  &sk MOD_2   &sk MOD_3   &sk MOD_4      &kp BSPC  &kp DELETE &kp LEFT    &kp DOWN    &kp RIGHT  &none
 			&kp LGC(Z) &kp LGC(X)  &kp LGC(C)  &kp LGC(V)     &kp RET   &kp RET    &kp PG_DN   &kp TAB     &kp PG_UP  &none
 			&trans         &trans       &trans     &trans
 			>;
 		};
 		
-		// Right inner thumb held down to activate nav_layer
+		// RIGHT INNER thumb held
 		num_layer {
 			bindings = <
 			&kp N1     &kp N2   &kp N3      &kp N4          &kp N5     &kp N6      &kp N7         &kp N8      &kp N9     &kp N0
@@ -211,6 +212,7 @@
 			>;
 		};
 		
+		// BOTH INNER held
 		system_layer {
 			bindings = <
 			&bootloader &tog GAME_L  &none        &none         &none  &rgb_ug RGB_TOG &kp C_PP      &none          &none         &unstick
@@ -220,6 +222,7 @@
 			>;
 		};
 		
+		// Toggled from system
 		game_layer {
 			bindings = <
 			&none      &kp Q      &kp W     &kp E      &kp R     &kp LSHFT  &kp ENTER     &kp UP     &kp R     &to DEF_L
