@@ -9,6 +9,7 @@
 #define LGorA LALT
 #define SSHOT LG(LS(S))
 #define EMOJI LG(DOT)
+#define LOCK LG(L)
 
 #define MOD_1 LCMD
 #define MOD_2 LALT

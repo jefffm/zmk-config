@@ -189,10 +189,10 @@
 			>;
 		};
 		
-		// L+R inner held
+		// R inner held
 		sym_layer {
 			bindings = <
-			&kp ESC   &none     &none     &none     &kp TILDE &kp CARET &none     &none     &none     &kp GRAVE
+			&none     &none     &none     &none     &kp TILDE &kp CARET &none     &kp EMOJI &none     &kp GRAVE
 			&kp MINUS &kp STAR  &kp EQUAL &kp UNDER &kp DLLR  &kp HASH  &sk MOD_5 &sk MOD_6 &sk MOD_7 &sk MOD_8
 			&kp PLUS  &kp PIPE  &kp AT    &kp FSLH  &kp PRCNT &hackpipe &kp BSLH  &kp AMPS  &kp QMARK &kp EXCL
 			
@@ -204,16 +204,16 @@
 		// L inner held
 		nav_layer {
 			bindings = <
-			&none      &swap     &win_swap   &kp SSHOT  &kp GLOBE &kp TAB    &kp HOME  &kp UP   &kp END   &kp EMOJI
+			&none      &swap     &win_swap   &kp SSHOT  &kp GLOBE &kp TAB    &kp HOME  &kp UP   &kp END   &none
 			&sk MOD_1  &sk MOD_2 &sk MOD_3   &sk MOD_4  &kp BSPC  &kp DELETE &kp LEFT  &kp DOWN &kp RIGHT &none
-			&kp LGC(Z) &kp LGC(X) &kp LGC(C) &kp LGC(V) &kp RET   &kp RET    &kp PG_DN &kp TAB  &kp PG_UP &none
+			&kp LGC(Z) &kp LGC(X) &kp LGC(C) &kp LGC(V) &none     &none      &kp PG_DN &none    &kp PG_UP &kp LOCK
 			
 			// default layer
 			&trans    &trans    &trans    &trans
 			>;
 		};
 		
-		// R inner held
+		// L+R inner held
 		num_layer {
 			bindings = <
 			&kp N1    &kp N2    &kp N3    &kp N4    &kp N5  &kp N6  &kp N7    &kp N8    &kp N9    &kp N0
