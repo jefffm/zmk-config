@@ -1,0 +1,254 @@
+layout: {zmk_keyboard: regret}
+layers:
+  default:
+  - ''''
+  - ','
+  - .
+  - P
+  - Y
+  - F
+  - G
+  - C
+  - R
+  - L
+  - A
+  - O
+  - E
+  - U
+  - I
+  - D
+  - H
+  - T
+  - N
+  - S
+  - ;
+  - Q
+  - J
+  - K
+  - X
+  - B
+  - M
+  - W
+  - V
+  - Z
+  - {t: BSPC, h: sticky}
+  - '&layer_nav'
+  - '&layer_sym'
+  - SPACE
+  sym:
+  - ''
+  - ''
+  - ''
+  - ''
+  - '~'
+  - ^
+  - ''
+  - Ctl+Gui+SPC
+  - ''
+  - '`'
+  - '-'
+  - '*'
+  - '='
+  - _
+  - $
+  - '#'
+  - {t: RSHFT, h: sticky}
+  - {t: RCMD, h: sticky}
+  - {t: RALT, h: sticky}
+  - {t: RCTRL, h: sticky}
+  - +
+  - '|'
+  - '@'
+  - /
+  - '%'
+  - '&hackpipe'
+  - \
+  - '&'
+  - '?'
+  - '!'
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  nav:
+  - ''
+  - '&swap'
+  - '&win_swap'
+  - Ctl+Gui+Sft+4
+  - GLOBE
+  - TAB
+  - HOME
+  - UP
+  - END
+  - ''
+  - {t: LCTRL, h: sticky}
+  - {t: LALT, h: sticky}
+  - {t: LCMD, h: sticky}
+  - {t: LSHFT, h: sticky}
+  - BSPC
+  - DELETE
+  - LEFT
+  - DOWN
+  - RIGHT
+  - ''
+  - Gui+Z
+  - Gui+X
+  - Gui+C
+  - Gui+V
+  - ''
+  - ''
+  - PG DN
+  - ''
+  - PG UP
+  - Ctl+Gui+Q
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  num:
+  - '1'
+  - '2'
+  - '3'
+  - '4'
+  - '5'
+  - '6'
+  - '7'
+  - '8'
+  - '9'
+  - '0'
+  - {t: LCTRL, h: sticky}
+  - {t: LALT, h: sticky}
+  - {t: LCMD, h: sticky}
+  - {t: LSHFT, h: sticky}
+  - F6
+  - F7
+  - {t: RSHFT, h: sticky}
+  - {t: RCMD, h: sticky}
+  - {t: RALT, h: sticky}
+  - {t: RCTRL, h: sticky}
+  - F1
+  - F2
+  - F3
+  - F4
+  - F5
+  - F8
+  - F9
+  - F10
+  - F11
+  - F12
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  system:
+  - '&bootloader'
+  - {t: game, h: toggle}
+  - ''
+  - ''
+  - ''
+  - RGB TOG
+  - PP
+  - ''
+  - ''
+  - '&unstick'
+  - LCTRL
+  - LALT
+  - LCMD
+  - LSHFT
+  - ''
+  - PREV
+  - VOL DN
+  - VOL UP
+  - NEXT
+  - ''
+  - ''
+  - {t: BT, h: '0'}
+  - {t: BT, h: '1'}
+  - {t: BT, h: '2'}
+  - ''
+  - BT CLR
+  - {t: BT DISC, h: '2'}
+  - {t: BT DISC, h: '1'}
+  - {t: BT DISC, h: '0'}
+  - ''
+  - {type: held}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {type: held}
+  game:
+  - ''
+  - Q
+  - W
+  - E
+  - R
+  - LSHFT
+  - ENTER
+  - UP
+  - R
+  - {t: default, h: toggle}
+  - ''
+  - A
+  - S
+  - D
+  - F
+  - ''
+  - LEFT
+  - DOWN
+  - RIGHT
+  - S
+  - ''
+  - Z
+  - X
+  - C
+  - V
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+combos:
+- p: [0, 9]
+  k: '&caps_word'
+  l: [default]
+- p: [1, 11]
+  k: '['
+  l: [default, sym, nav, num, game]
+- p: [2, 12]
+  k: '{'
+  l: [default, sym, nav, num, game]
+- p: [3, 13]
+  k: (
+  l: [default, sym, nav, num, game]
+- p: [6, 16]
+  k: )
+  l: [default, sym, nav, num, game]
+- p: [7, 17]
+  k: '}'
+  l: [default, sym, nav, num, game]
+- p: [8, 18]
+  k: ']'
+  l: [default, sym, nav, num, game]
+- p: [2, 3]
+  k: {t: LSHFT, h: sticky}
+  l: [default, sym, nav, num, game]
+- p: [6, 7]
+  k: {t: RSHFT, h: sticky}
+  l: [default, sym, nav, num, game]
+- p: [20, 29]
+  k: CAPSLOCK
+  l: [default]
+- p: [11, 12, 13]
+  k: ESC
+  l: [default]
+- p: [16, 17, 18]
+  k: RET
+  l: [default]
+- p: [21, 22]
+  k: Gui+A
+  l: [nav]
+- p: [30, 33]
+  k: system
