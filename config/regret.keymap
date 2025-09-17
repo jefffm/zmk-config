@@ -159,7 +159,7 @@
 	esc  { key-positions = <11 12 13>; bindings = <&kp ESC>; layers = <DEF_L>; };
 	ret  { key-positions = <16 17 18>; bindings = <&kp RET>; layers = <DEF_L>; };
 		
-	sall { key-positions = <21 22>; bindings = <&kp LGorC(A)>; layers = <NAV_L>; };
+	sall { key-positions = <21 22>; bindings = <&kp LGC(A)>; layers = <NAV_L>; };
 		
 		/* Activate system layer on inner thumb press */
 		sys {
