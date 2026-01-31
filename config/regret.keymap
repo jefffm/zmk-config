@@ -25,9 +25,15 @@
 #define NAV_L 2
 #define NUM_L 3
 #define SYS_L 4
-#define GAME_L 5
+#define TMUX_L 5
+#define GAME_L 6
 
-#define NON_SYS_LAYERS DEF_L SYM_L NAV_L NUM_L GAME_L
+#define NON_SYS_LAYERS DEF_L SYM_L NAV_L NUM_L GAME_L TMUX_L
+
+// Tmux prefix key - change this if you change your tmux prefix
+#ifndef TMUX_PREFIX
+#define TMUX_PREFIX HOME
+#endif
 
 // How long a key must be pressed to trigger Hold behavior
 #define HRM_TERM 280
@@ -116,6 +122,20 @@
 			, <&macro_tap &rgb_ug RGB_COLOR_HSB(GREEN_H, GREEN_S, 50)>
 			;
 		};
+
+		layer_tmux: layer_tmux {
+			label = "tmux layer color";
+			compatible = "zmk,behavior-macro";
+			#binding-cells = <0>;
+			wait-ms = <0>;
+			tap-ms = <0>;
+			bindings = <&macro_press &mo TMUX_L>
+			, <&macro_tap &rgb_ug RGB_COLOR_HSB(180, 100, 100)>
+			, <&macro_pause_for_release>
+			, <&macro_release &mo TMUX_L>
+			, <&macro_tap &rgb_ug RGB_COLOR_HSB(GREEN_H, GREEN_S, 50)>
+			;
+		};
 		
 		unstick: unstick {
 			label = "ZM_unstick";
@@ -137,6 +157,40 @@
 		
 		// |>
 		ZMK_MACRO(hackpipe, bindings = <&kp PIPE &kp GT &kp SPACE>;)
+
+		// Tmux macros - send prefix + command (prefix defined by TMUX_PREFIX)
+		ZMK_MACRO(tmux1,  bindings = <&kp TMUX_PREFIX &kp N1>;)
+		ZMK_MACRO(tmux2,  bindings = <&kp TMUX_PREFIX &kp N2>;)
+		ZMK_MACRO(tmux3,  bindings = <&kp TMUX_PREFIX &kp N3>;)
+		ZMK_MACRO(tmux4,  bindings = <&kp TMUX_PREFIX &kp N4>;)
+		ZMK_MACRO(tmux5,  bindings = <&kp TMUX_PREFIX &kp N5>;)
+		ZMK_MACRO(tmux6,  bindings = <&kp TMUX_PREFIX &kp N6>;)
+		ZMK_MACRO(tmux7,  bindings = <&kp TMUX_PREFIX &kp N7>;)
+		ZMK_MACRO(tmux8,  bindings = <&kp TMUX_PREFIX &kp N8>;)
+		ZMK_MACRO(tmux9,  bindings = <&kp TMUX_PREFIX &kp N9>;)
+		ZMK_MACRO(tmux0,  bindings = <&kp TMUX_PREFIX &kp N0>;)
+		ZMK_MACRO(tmuxc,  bindings = <&kp TMUX_PREFIX &kp C>;)       // new window
+		ZMK_MACRO(tmuxn,  bindings = <&kp TMUX_PREFIX &kp N>;)       // next window
+		ZMK_MACRO(tmuxp,  bindings = <&kp TMUX_PREFIX &kp P>;)       // prev window
+		ZMK_MACRO(tmuxd,  bindings = <&kp TMUX_PREFIX &kp D>;)       // detach
+		ZMK_MACRO(tmuxx,  bindings = <&kp TMUX_PREFIX &kp X>;)       // close pane
+		ZMK_MACRO(tmuxz,  bindings = <&kp TMUX_PREFIX &kp Z>;)       // zoom pane
+		ZMK_MACRO(tmuxo,  bindings = <&kp TMUX_PREFIX &kp O>;)       // cycle panes
+		ZMK_MACRO(tmuxcopy, bindings = <&kp TMUX_PREFIX &kp LBRACKET>;) // copy mode
+		ZMK_MACRO(tmuxlay, bindings = <&kp TMUX_PREFIX &kp SPACE>;)  // layout cycle
+		ZMK_MACRO(tmuxh,  bindings = <&kp TMUX_PREFIX &kp H>;)       // pane left
+		ZMK_MACRO(tmuxj,  bindings = <&kp TMUX_PREFIX &kp J>;)       // pane down
+		ZMK_MACRO(tmuxk,  bindings = <&kp TMUX_PREFIX &kp K>;)       // pane up
+		ZMK_MACRO(tmuxl,  bindings = <&kp TMUX_PREFIX &kp L>;)       // pane right / last window
+		ZMK_MACRO(tmuxvsp, bindings = <&kp TMUX_PREFIX &kp PRCNT>;)  // split horizontal (side-by-side)
+		ZMK_MACRO(tmuxhsp, bindings = <&kp TMUX_PREFIX &kp DQT>;)    // split vertical (top-bottom)
+		ZMK_MACRO(tmuxb,  bindings = <&kp TMUX_PREFIX &kp B>;)       // break pane to new window
+		ZMK_MACRO(tmuxr,  bindings = <&kp TMUX_PREFIX &kp R>;)       // resize mode
+		ZMK_MACRO(tmuxren, bindings = <&kp TMUX_PREFIX &kp COMMA>;)  // rename window
+		ZMK_MACRO(tmuxs,  bindings = <&kp TMUX_PREFIX &kp S>;)       // choose session (interactive)
+		ZMK_MACRO(tmuxw,  bindings = <&kp TMUX_PREFIX &kp W>;)       // choose window (interactive)
+		ZMK_MACRO(tmuxf,  bindings = <&kp TMUX_PREFIX &kp F>;)       // find window by name
+		ZMK_MACRO(tmuxswp, bindings = <&kp TMUX_PREFIX &kp LS(O)>;)  // swap pane up
 	};
 	
 	combos {
@@ -192,10 +246,10 @@
 		// R inner held
 		sym_layer {
 			bindings = <
-			&none     &none     &none     &none     &kp TILDE &kp CARET &none     &kp EMOJI &none     &kp GRAVE
+			&none     &none     &none     &none     &kp TILDE &kp CARET &none     &kp EMOJI &to TMUX_L &kp GRAVE
 			&kp MINUS &kp STAR  &kp EQUAL &kp UNDER &kp DLLR  &kp HASH  &sk MOD_5 &sk MOD_6 &sk MOD_7 &sk MOD_8
 			&kp PLUS  &kp PIPE  &kp AT    &kp FSLH  &kp PRCNT &hackpipe &kp BSLH  &kp AMPS  &kp QMARK &kp EXCL
-			
+
 			// default layer
 			&trans    &trans    &trans    &trans
 			>;
@@ -237,13 +291,34 @@
 			>;
 		};
 		
+		// Tmux layer - activate from SYM layer via top-right key
+		// Sends prefix + command automatically (prefix defined by TMUX_PREFIX)
+		// Layout optimized for ergonomics and workflow
+		tmux_layer {
+			bindings = <
+			// Window numbers (most frequent - top row)
+			&tmux1     &tmux2     &tmux3     &tmux4     &tmux5      &tmux6      &tmux7      &tmux8      &tmux9      &tmux0
+
+			// Pane operations (home row - strongest fingers)
+			// Left: copy, splits | Right: vim-style navigation, zoom, close, new
+			&tmuxcopy  &tmuxvsp   &tmuxhsp   &tmuxh     &tmuxj      &tmuxk      &tmuxl      &tmuxz      &tmuxx      &tmuxc
+
+			// Window/session management (bottom row)
+			// Left: navigation, detach, resize, cycle | Right: session ops, rename, exit
+			&tmuxn     &tmuxp     &tmuxd     &tmuxr     &tmuxlay    &tmuxs      &tmuxw      &tmuxren    &to DEF_L   &tmuxb
+
+			// Thumb keys - stay in layer or access other layers
+			&trans     &trans     &trans     &trans
+			>;
+		};
+
 		// L+R outer -> toggle (top right to exit)
 		game_layer {
 			bindings = <
 			&none   &kp Q   &kp W  &kp E  &kp R   &kp LSHFT &kp ENTER &kp UP   &kp R     &to DEF_L
 			&none   &kp A   &kp S  &kp D  &kp F   &none     &kp LEFT  &kp DOWN &kp RIGHT &kp S
 			&none   &kp Z   &kp X  &kp C  &kp V   &none     &none     &none    &none     &none
-			
+
 			// default layer
 			&trans  &trans  &trans &trans
 			>;
