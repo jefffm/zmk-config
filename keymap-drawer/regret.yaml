@@ -44,7 +44,7 @@ layers:
   - ^
   - ''
   - Ctl+Gui+SPC
-  - ''
+  - {t: tmux, h: toggle}
   - '`'
   - '-'
   - '*'
@@ -175,6 +175,41 @@ layers:
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {type: held}
+  tmux:
+  - '&tmux1'
+  - '&tmux2'
+  - '&tmux3'
+  - '&tmux4'
+  - '&tmux5'
+  - '&tmux6'
+  - '&tmux7'
+  - '&tmux8'
+  - '&tmux9'
+  - '&tmux0'
+  - '&tmuxcopy'
+  - '&tmuxvsp'
+  - '&tmuxhsp'
+  - '&tmuxh'
+  - '&tmuxj'
+  - '&tmuxk'
+  - '&tmuxl'
+  - '&tmuxz'
+  - '&tmuxx'
+  - '&tmuxc'
+  - '&tmuxn'
+  - '&tmuxp'
+  - '&tmuxd'
+  - '&tmuxr'
+  - '&tmuxlay'
+  - '&tmuxs'
+  - '&tmuxw'
+  - '&tmuxren'
+  - {t: default, h: toggle}
+  - '&tmuxb'
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
   game:
   - ''
   - Q
@@ -216,28 +251,28 @@ combos:
   l: [default]
 - p: [1, 11]
   k: '['
-  l: [default, sym, nav, num, game]
+  l: [default, sym, nav, num, game, tmux]
 - p: [2, 12]
   k: '{'
-  l: [default, sym, nav, num, game]
+  l: [default, sym, nav, num, game, tmux]
 - p: [3, 13]
   k: (
-  l: [default, sym, nav, num, game]
+  l: [default, sym, nav, num, game, tmux]
 - p: [6, 16]
   k: )
-  l: [default, sym, nav, num, game]
+  l: [default, sym, nav, num, game, tmux]
 - p: [7, 17]
   k: '}'
-  l: [default, sym, nav, num, game]
+  l: [default, sym, nav, num, game, tmux]
 - p: [8, 18]
   k: ']'
-  l: [default, sym, nav, num, game]
+  l: [default, sym, nav, num, game, tmux]
 - p: [2, 3]
   k: {t: LSHFT, h: sticky}
-  l: [default, sym, nav, num, game]
+  l: [default, sym, nav, num, game, tmux]
 - p: [6, 7]
   k: {t: RSHFT, h: sticky}
-  l: [default, sym, nav, num, game]
+  l: [default, sym, nav, num, game, tmux]
 - p: [20, 29]
   k: CAPSLOCK
   l: [default]
