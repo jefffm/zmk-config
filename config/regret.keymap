@@ -191,6 +191,11 @@
 		ZMK_MACRO(tmuxw,  bindings = <&kp TMUX_PREFIX &kp W>;)       // choose window (interactive)
 		ZMK_MACRO(tmuxf,  bindings = <&kp TMUX_PREFIX &kp F>;)       // find window by name
 		ZMK_MACRO(tmuxswp, bindings = <&kp TMUX_PREFIX &kp LS(O)>;)  // swap pane up
+		ZMK_MACRO(tmuxwk,  bindings = <&kp TMUX_PREFIX &kp AMPS>;)  // kill window (&)
+		ZMK_MACRO(tmuxpp,  bindings = <&kp TMUX_PREFIX &kp SEMI>;)  // prev pane (;)
+		ZMK_MACRO(tmuxspv, bindings = <&kp TMUX_PREFIX &kp LPAR>;)  // prev session (()
+		ZMK_MACRO(tmuxsnt, bindings = <&kp TMUX_PREFIX &kp RPAR>;)  // next session ())
+		ZMK_MACRO(tmuxll,  bindings = <&kp TMUX_PREFIX &kp LS(L)>;) // last session (L)
 	};
 	
 	combos {
@@ -215,6 +220,9 @@
 		
 	sall { key-positions = <21 22>; bindings = <&kp LGC(A)>; layers = <NAV_L>; };
 		
+		/* Activate tmux layer on left thumb chord */
+		tmux { key-positions = <30 31>; bindings = <&layer_tmux>; require-prior-idle-ms = <COMBO_IDLE>; };
+
 		/* Activate system layer on inner thumb press */
 		sys {
 			key-positions = <30 33>;
@@ -291,23 +299,45 @@
 			>;
 		};
 		
-		// Tmux layer - activate from SYM layer via top-right key
-		// Sends prefix + command automatically (prefix defined by TMUX_PREFIX)
-		// Layout optimized for ergonomics and workflow
+		// Tmux Layer - Grid Layout
+		// ========================
+		// A dedicated layer for tmux commands, organized as a 2D grid so you
+		// can build commands by "row = what object, column = what action"
+		// without memorizing tmux's scattered default keybindings.
+		//
+		// ROWS (tmux objects):
+		//   Top    = Windows
+		//   Middle = Panes
+		//   Bottom = Sessions
+		//
+		// LEFT HAND COLUMNS (mutating actions):
+		//   Col 1 = Create (new, vsplit, browse)
+		//   Col 2 = Modify (rename, hsplit, detach)
+		//   Col 3 = Kill/Destroy
+		//   Col 4 = Browse/Pick (interactive chooser)
+		//   Col 5 = Find/Transform (search, swap)
+		//
+		// RIGHT HAND COLUMNS (navigation):
+		//   Col 1 = Previous (in order)
+		//   Col 2 = Next (in order)
+		//   Col 3 = Last (most recently used, like alt-tab)
+		//   Col 4 = Utility (layout toggle, zoom, scroll/copy)
+		//   Col 5 = Exit layer / extra utility
+		//
+		// Pane R1 is empty because tmux has no "previous pane in order"
+		// — only next (prefix+o) and last (prefix+;).
 		tmux_layer {
 			bindings = <
-			// Window numbers (most frequent - top row)
-			&tmux1     &tmux2     &tmux3     &tmux4     &tmux5      &tmux6      &tmux7      &tmux8      &tmux9      &tmux0
+			// Windows: new, rename, kill, browse, find | prev, next, last, layout, exit
+			&tmuxc     &tmuxren   &tmuxwk    &tmuxw     &tmuxf      &tmuxp      &tmuxn      &tmuxl      &tmuxlay    &to DEF_L
 
-			// Pane operations (home row - strongest fingers)
-			// Left: copy, splits | Right: vim-style navigation, zoom, close, new
-			&tmuxcopy  &tmuxvsp   &tmuxhsp   &tmuxh     &tmuxj      &tmuxk      &tmuxl      &tmuxz      &tmuxx      &tmuxc
+			// Panes: vsplit, hsplit, kill, break, swap | -, next, last, zoom, resize
+			&tmuxvsp   &tmuxhsp   &tmuxx     &tmuxb     &tmuxswp    &none       &tmuxo      &tmuxpp     &tmuxz      &tmuxr
 
-			// Window/session management (bottom row)
-			// Left: navigation, detach, resize, cycle | Right: session ops, rename, exit
-			&tmuxn     &tmuxp     &tmuxd     &tmuxr     &tmuxlay    &tmuxs      &tmuxw      &tmuxren    &to DEF_L   &tmuxb
+			// Sessions: browse, detach, -, -, - | prev, next, last, scroll/copy, -
+			&tmuxs     &tmuxd     &none      &none      &none       &tmuxspv    &tmuxsnt    &tmuxll     &tmuxcopy   &none
 
-			// Thumb keys - stay in layer or access other layers
+			// Thumb keys
 			&trans     &trans     &trans     &trans
 			>;
 		};
