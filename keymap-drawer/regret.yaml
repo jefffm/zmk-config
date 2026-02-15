@@ -176,36 +176,36 @@ layers:
   - {t: ▽, type: trans}
   - {type: held}
   tmux:
-  - '&tmux1'
-  - '&tmux2'
-  - '&tmux3'
-  - '&tmux4'
-  - '&tmux5'
-  - '&tmux6'
-  - '&tmux7'
-  - '&tmux8'
-  - '&tmux9'
-  - '&tmux0'
-  - '&tmuxcopy'
+  - '&tmuxc'
+  - '&tmuxren'
+  - '&tmuxwk'
+  - '&tmuxw'
+  - '&tmuxf'
+  - '&tmuxp'
+  - '&tmuxn'
+  - '&tmuxl'
+  - '&tmuxlay'
+  - {t: default, h: toggle}
   - '&tmuxvsp'
   - '&tmuxhsp'
-  - '&tmuxh'
-  - '&tmuxj'
-  - '&tmuxk'
-  - '&tmuxl'
-  - '&tmuxz'
   - '&tmuxx'
-  - '&tmuxc'
-  - '&tmuxn'
-  - '&tmuxp'
-  - '&tmuxd'
-  - '&tmuxr'
-  - '&tmuxlay'
-  - '&tmuxs'
-  - '&tmuxw'
-  - '&tmuxren'
-  - {t: default, h: toggle}
   - '&tmuxb'
+  - '&tmuxswp'
+  - ''
+  - '&tmuxo'
+  - '&tmuxpp'
+  - '&tmuxz'
+  - '&tmuxr'
+  - '&tmuxs'
+  - '&tmuxd'
+  - ''
+  - ''
+  - ''
+  - '&tmuxspv'
+  - '&tmuxsnt'
+  - '&tmuxll'
+  - '&tmuxcopy'
+  - ''
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
@@ -285,5 +285,7 @@ combos:
 - p: [21, 22]
   k: Gui+A
   l: [nav]
+- p: [30, 31]
+  k: '&layer_tmux'
 - p: [30, 33]
   k: system
