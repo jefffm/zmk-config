@@ -1,0 +1,176 @@
+draw_config:
+  dark_mode: auto
+  separate_combo_diagrams: true
+  combo_diagrams_scale: 2
+
+parse_config:
+  mark_alternate_layer_activators: true
+  tap_toggle_label: tap-toggle
+  trans_legend:
+    t: $$mdi:transfer$$
+    type: trans
+
+  raw_binding_map:
+    # Modifiers
+    "&caps_word": $$mdi:alpha-w-box$$
+    "&swap": $$mdi:swap-horizontal$$
+    "&win_swap": $$mdi:swap-horizontal-bold$$
+
+    # Custom macros
+    "&hackpipe": "|>"
+    "&unstick": $$mdi:restart$$
+    "&layer_sym": {tap: SYM, hold: SYM}
+    "&layer_nav": {tap: NAV, hold: NAV}
+    "&layer_tmux": {tap: TMUX, hold: TMUX}
+
+    # Tmux macros - Windows
+    "&tmuxc": {tap: $$mdi:tab-plus$$, hold: new win}
+    "&tmuxren": {tap: $$mdi:rename$$, hold: rename}
+    "&tmuxwk": {tap: $$mdi:tab-remove$$, hold: kill win}
+    "&tmuxw": {tap: $$mdi:tab-search$$, hold: browse}
+    "&tmuxf": {tap: $$mdi:magnify$$, hold: find}
+    "&tmuxp": {tap: $$mdi:chevron-left$$, hold: prev win}
+    "&tmuxn": {tap: $$mdi:chevron-right$$, hold: next win}
+    "&tmuxl": {tap: $$mdi:swap-horizontal$$, hold: last win}
+    "&tmuxlay": {tap: $$mdi:view-dashboard$$, hold: layout}
+
+    # Tmux macros - Panes
+    "&tmuxvsp": {tap: $$mdi:arrow-split-vertical$$, hold: vsplit}
+    "&tmuxhsp": {tap: $$mdi:arrow-split-horizontal$$, hold: hsplit}
+    "&tmuxx": {tap: $$mdi:close$$, hold: kill pane}
+    "&tmuxb": {tap: $$mdi:arrow-expand$$, hold: break}
+    "&tmuxswp": {tap: $$mdi:swap-vertical$$, hold: swap}
+    "&tmuxo": {tap: $$mdi:rotate-right$$, hold: next pane}
+    "&tmuxpp": {tap: $$mdi:rotate-left$$, hold: last pane}
+    "&tmuxz": {tap: $$mdi:fullscreen$$, hold: zoom}
+    "&tmuxr": {tap: $$mdi:resize$$, hold: resize}
+
+    # Tmux macros - Sessions
+    "&tmuxs": {tap: $$mdi:format-list-bulleted$$, hold: sessions}
+    "&tmuxd": {tap: $$mdi:logout$$, hold: detach}
+    "&tmuxspv": {tap: $$mdi:chevron-left$$, hold: prev ses}
+    "&tmuxsnt": {tap: $$mdi:chevron-right$$, hold: next ses}
+    "&tmuxll": {tap: $$mdi:swap-horizontal$$, hold: last ses}
+    "&tmuxcopy": {tap: $$mdi:content-copy$$, hold: copy}
+
+    # Bluetooth
+    "&bt BT_SEL 0":
+      tap: $$mdi:bluetooth-connect$$
+      hold: 1
+    "&bt BT_SEL 1":
+      tap: $$mdi:bluetooth-connect$$
+      hold: 2
+    "&bt BT_SEL 2":
+      tap: $$mdi:bluetooth-connect$$
+      hold: 3
+    "&bt BT_CLR":
+      tap: $$mdi:bluetooth-off$$
+    "&bt BT_DISC 0":
+      tap: $$mdi:bluetooth-off$$
+      hold: 1
+    "&bt BT_DISC 1":
+      tap: $$mdi:bluetooth-off$$
+      hold: 2
+    "&bt BT_DISC 2":
+      tap: $$mdi:bluetooth-off$$
+      hold: 3
+
+    # Reset
+    "&bootloader":
+      tap: $$mdi:progress-download$$
+
+  zmk_keycode_map:
+    AMPERSAND: '&'
+    AMPS: '&'
+    APOS: ''''
+    APOSTROPHE: ''''
+    ASTERISK: '*'
+    ASTRK: '*'
+    AT: '@'
+    AT_SIGN: '@'
+    BACKSLASH: \
+    BSLH: \
+    BSPC: $$mdi:backspace$$
+    CARET: ^
+    COLON: ':'
+    COMMA: ','
+    DLLR: $
+    DOLLAR: $
+    DOT: .
+    DOUBLE_QUOTES: '"'
+    DQT: '"'
+    ENTER: $$mdi:keyboard-return$$
+    EQUAL: '='
+    ESC: $$mdi:keyboard-esc$$
+    EXCL: '!'
+    EXCLAMATION: '!'
+    FSLH: /
+    GRAVE: '`'
+    GREATER_THAN: '>'
+    GT: '>'
+    HASH: '#'
+    LALT: $$mdi:apple-keyboard-option$$
+    LBKT: '['
+    LBRC: '{'
+    LCTRL: $$mdi:apple-keyboard-control$$
+    LEFT_BRACE: '{'
+    LEFT_BRACKET: '['
+    LEFT_PARENTHESIS: (
+    LESS_THAN: <
+    LGUI: $$mdi:apple-keyboard-command$$
+    LPAR: (
+    LSHFT: $$mdi:apple-keyboard-shift$$
+    LT: <
+    MINUS: '-'
+    NON_US_BACKSLASH: \
+    NON_US_BSLH: '|'
+    NON_US_HASH: '#'
+    NUHS: '#'
+    PERCENT: '%'
+    PERIOD: .
+    PIPE2: '|'
+    PIPE: '|'
+    PLUS: +
+    POUND: '#'
+    PRCNT: '%'
+    QMARK: '?'
+    QUESTION: '?'
+    RALT: $$mdi:apple-keyboard-option$$
+    RBKT: ']'
+    RBRC: '}'
+    RCTRL: $$mdi:apple-keyboard-control$$
+    RETURN: $$mdi:keyboard-return$$
+    RGUI: $$mdi:apple-keyboard-command$$
+    RIGHT_BRACE: '}'
+    RIGHT_BRACKET: ']'
+    RIGHT_PARENTHESIS: )
+    RPAR: )
+    RSHFT: $$mdi:apple-keyboard-shift$$
+    SEMI: ;
+    SEMICOLON: ;
+    SINGLE_QUOTE: ''''
+    SLASH: /
+    SPACE: $$mdi:keyboard-space$$
+    SQT: ''''
+    STAR: '*'
+    TAB: $$mdi:keyboard-tab$$
+    TILDE2: '~'
+    TILDE: '~'
+    UNDER: _
+    UNDERSCORE: _
+    CAPSLOCK: $$mdi:caps-lock$$
+    DELETE: $$mdi:backspace-reverse$$
+    C_PP: $$mdi:play-pause$$
+    C_PREV: $$mdi:skip-previous$$
+    C_NEXT: $$mdi:skip-next$$
+    C_VOL_DN: $$mdi:volume-minus$$
+    C_VOL_UP: $$mdi:volume-plus$$
+    HOME: $$mdi:format-horizontal-align-left$$
+    END: $$mdi:format-horizontal-align-right$$
+    PG_UP: $$mdi:chevron-double-up$$
+    PG_DN: $$mdi:chevron-double-down$$
+    UP: $$mdi:arrow-up$$
+    DOWN: $$mdi:arrow-down$$
+    LEFT: $$mdi:arrow-left$$
+    RIGHT: $$mdi:arrow-right$$
+    GLOBE: $$mdi:earth$$

@@ -1,18 +1,17 @@
 ![generated layout](./keymap-drawer/regret.svg)
- <img src="./keymap-drawer/regret.svg">
 
 # Regret Keyboard ZMK Configuration
 
-ZMK firmware configuration for the Regret keyboard with platform-specific keymaps optimized for productivity and ergonomics.
+ZMK firmware configuration for the [Regret keyboard](https://github.com/rschenk/regret) with platform-specific keymaps optimized for productivity and ergonomics.
 
 ## Features
 
 - **Platform-Specific Layouts**: Separate Mac and Windows configurations
 - **34-Key Split Layout**: Optimized for Dvorak-based typing
-- **Home Row Mods**: Comfortable modifier access without leaving home row
+- **Sticky Modifiers**: One-shot modifier access via combos and layer keys
 - **Multiple Layers**: Default, Symbol, Navigation, Number, System, Tmux, and Game layers
 - **Visual Feedback**: RGB lighting changes with layer activation
-- **Smart Combos**: Bracket pairs, shift keys, and system layer access
+- **Smart Combos**: Bracket pairs, shift keys, and layer access
 
 ## Layer Overview
 
@@ -21,140 +20,159 @@ ZMK firmware configuration for the Regret keyboard with platform-specific keymap
 | **Default** | Base typing layer (Dvorak layout) | Default |
 | **Symbol** | Symbols, special characters | Hold right inner thumb |
 | **Navigation** | Arrow keys, shortcuts, modifiers | Hold left inner thumb |
-| **Number** | Numbers, function keys | Hold both inner thumbs |
-| **System** | Bluetooth, RGB, media controls | Press both outer thumbs |
-| **Tmux** | Tmux window/pane management | `to TMUX_L` from Symbol layer |
+| **Number** | Numbers, function keys | Hold both inner thumbs (tri-layer) |
+| **System** | Bluetooth, RGB, media controls | Both outer thumbs combo |
+| **Tmux** | Tmux window/pane management | Both left thumbs combo, or `to TMUX_L` from Symbol layer |
 | **Game** | QWERTY gaming layout | Toggle from System layer |
 
-## Tmux Layer - Detailed Guide
-
-### Overview
-
-The Tmux layer provides one-tap access to all common tmux operations, eliminating the need to manually type the prefix key. It's optimized for ergonomics with the most frequent operations on the home row.
-
-### Activation
-
-From the **Symbol layer** (hold right inner thumb), press the **top-right key** (position 8) to enter the Tmux layer. The keyboard will change to **cyan** color to indicate you're in Tmux mode.
-
-### Layout
+## Default Layer (Dvorak-Based)
 
 ```
-┌─────────────────── TMUX LAYER ───────────────────┐
-│ Window Numbers (Top Row - Most Frequent)         │
-│  1    2    3    4    5  │  6    7    8    9    0  │
-│                                                    │
-│ Pane Operations (Home Row - Ergonomic)           │
-│ copy vsp  hsp   h    j  │  k    l   zoom  X   new │
-│                                                    │
-│ Session/Window Management (Bottom Row)            │
-│ next prev det resize lay│ sess  win  name EXIT brk│
-└────────────────────────────────────────────────────┘
+'  ,  .  p  y    f  g  c  r  l
+a  o  e  u  i    d  h  t  n  s
+;  q  j  k  x    b  m  w  v  z
+    BSPC NAV      SYM SPACE
+```
+
+### Combos
+
+- **Brackets**: Vertical combos (top + home row)
+  - `,+o` = `[`, `.+e` = `{`, `p+u` = `(`
+  - `g+h` = `)`, `c+t` = `}`, `r+n` = `]`
+- **Shift**: `.+p` or `g+c` = sticky shift
+- **Escape**: `o+e+u` (3-key combo on left home)
+- **Return**: `h+t+n` (3-key combo on right home)
+- **Caps Word**: `'+l` (top corners)
+- **Caps Lock**: `;+z` (bottom corners)
+- **Select All**: `q+j` (on NAV layer only)
+- **Tmux Layer**: Both left thumbs (BSPC + NAV)
+- **System Layer**: Both outer thumbs (BSPC + SPACE)
+
+## Symbol Layer
+
+Access: Hold right inner thumb (SYM)
+
+```
+-      -      -      -      ~      ^      -      EMJ   TMUX   `
+-      *      =      _      $      #      sk5    sk6   sk7    sk8
++      |      @      /      %      |>     \      &     ?      !
+```
+
+- **Top Right**: Emoji picker, Tmux layer toggle, backtick
+- **Home Row Left**: Math operators (`-`, `*`, `=`, `_`, `$`)
+- **Home Row Right**: `#` + sticky modifiers (Shift, Cmd, Alt, Ctrl)
+- **Bottom**: Logic/programming symbols, hackpipe (`|> `)
+
+## Navigation Layer
+
+Access: Hold left inner thumb (NAV)
+
+```
+-      swap   wswap  sshot  globe   TAB    HOME   UP     END    -
+sk1    sk2    sk3    sk4    BSPC    DEL    LEFT   DOWN   RIGHT  -
+Cmd+Z  Cmd+X  Cmd+C  Cmd+V  -       -      PGDN   -      PGUP   LOCK
+```
+
+- **Window Management**: App switcher (`swap`), window switcher (`wswap`)
+- **Cursor Keys**: Vim-style arrow placement + Home/End
+- **Editing**: Backspace, Delete, common shortcuts
+- **Sticky Modifiers**: Left hand home row (Ctrl, Alt, Cmd, Shift)
+
+## Number Layer
+
+Access: Hold both inner thumbs (tri-layer: SYM + NAV)
+
+```
+1     2     3     4     5      6     7     8     9     0
+sk1   sk2   sk3   sk4   F6     F7    sk5   sk6   sk7   sk8
+F1    F2    F3    F4    F5     F8    F9    F10   F11   F12
+```
+
+- **Numbers**: Top row 1-0
+- **Function Keys**: F1-F12 on bottom two rows
+- **Sticky Modifiers**: Available for function key chording
+
+## Tmux Layer
+
+Access: Both left thumbs combo (BSPC + NAV), or `to TMUX_L` from Symbol layer top row
+
+The Tmux layer is organized as a 2D grid: **rows = tmux objects**, **columns = actions**. The keyboard turns **cyan** when active.
+
+```
+┌──────────────────── TMUX LAYER ────────────────────┐
+│         MUTATING (left)      │  NAVIGATION (right)  │
+│  create modify  kill  browse find │ prev  next  last  util  exit │
+├─────── Windows (top row) ────┼──────────────────────┤
+│  new    rename  kill  browse find │ prev  next  last  layout EXIT │
+├─────── Panes (home row) ─────┼──────────────────────┤
+│  vsplit hsplit  kill  break  swap │  -    next  last  zoom  resize│
+├─────── Sessions (bottom) ────┼──────────────────────┤
+│  browse detach   -     -      -  │ prev  next  last  copy   -    │
+└──────────────────────────────┴──────────────────────┘
 ```
 
 ### Key Reference
 
-#### Top Row - Window Switching
-| Key | Function | Tmux Command |
-|-----|----------|--------------|
-| `1-9, 0` | Switch to window N | `prefix + N` |
+#### Top Row - Window Management
+| Position | Left Hand | | Right Hand |
+|----------|-----------|--|------------|
+| Col 1 | `new` — new window (`prefix+c`) | | `prev` — previous window (`prefix+p`) |
+| Col 2 | `rename` — rename window (`prefix+,`) | | `next` — next window (`prefix+n`) |
+| Col 3 | `kill` — kill window (`prefix+&`) | | `last` — last window (`prefix+l`) |
+| Col 4 | `browse` — choose window (`prefix+w`) | | `layout` — cycle layouts (`prefix+Space`) |
+| Col 5 | `find` — find window (`prefix+f`) | | `EXIT` — return to default layer |
 
-#### Home Row - Pane Operations (Most Frequent)
-| Key | Function | Tmux Command | Notes |
-|-----|----------|--------------|-------|
-| **Left Hand** |
-| `copy` | Enter copy mode | `prefix + [` | Vim-style scrolling/selection |
-| `vsp` | Vertical split | `prefix + %` | Creates side-by-side panes |
-| `hsp` | Horizontal split | `prefix + "` | Creates stacked panes |
-| `h` | Focus pane left | `prefix + h` | Vim-style navigation |
-| `j` | Focus pane down | `prefix + j` | Vim-style navigation |
-| **Right Hand** |
-| `k` | Focus pane up | `prefix + k` | Vim-style navigation |
-| `l` | Focus pane right / Last window | `prefix + l` | Dual purpose |
-| `zoom` | Toggle pane zoom | `prefix + z` | Fullscreen current pane |
-| `X` | Close pane | `prefix + x` | With confirmation prompt |
-| `new` | New window | `prefix + c` | Uses current path |
+#### Home Row - Pane Operations
+| Position | Left Hand | | Right Hand |
+|----------|-----------|--|------------|
+| Col 1 | `vsplit` — vertical split (`prefix+%`) | | *(empty)* |
+| Col 2 | `hsplit` — horizontal split (`prefix+"`) | | `next` — cycle panes (`prefix+o`) |
+| Col 3 | `kill` — close pane (`prefix+x`) | | `last` — last pane (`prefix+;`) |
+| Col 4 | `break` — break pane to window (`prefix+b`) | | `zoom` — toggle fullscreen (`prefix+z`) |
+| Col 5 | `swap` — swap pane (`prefix+Shift+o`) | | `resize` — enter resize mode (`prefix+r`) |
 
-#### Bottom Row - Window/Session Management
-| Key | Function | Tmux Command | Notes |
-|-----|----------|--------------|-------|
-| **Left Hand** |
-| `next` | Next window | `prefix + n` | Window navigation |
-| `prev` | Previous window | `prefix + p` | Window navigation |
-| `det` | Detach session | `prefix + d` | Backgrounds tmux |
-| `resize` | Enter resize mode | `prefix + r` | Use hjkl to resize panes |
-| `lay` | Cycle layouts | `prefix + Space` | Even-horizontal, even-vertical, etc. |
-| **Right Hand** |
-| `sess` | Choose session | `prefix + s` | Interactive session picker |
-| `win` | Choose window | `prefix + w` | Interactive window picker |
-| `name` | Rename window | `prefix + ,` | Edit current window name |
-| `EXIT` | Return to default | - | Exit Tmux layer |
-| `brk` | Break pane | `prefix + b` | Move pane to new window |
+#### Bottom Row - Session Management
+| Position | Left Hand | | Right Hand |
+|----------|-----------|--|------------|
+| Col 1 | `browse` — choose session (`prefix+s`) | | `prev` — previous session (`prefix+(`) |
+| Col 2 | `detach` — detach session (`prefix+d`) | | `next` — next session (`prefix+)`) |
+| Col 3-5 | *(empty)* | | `last` — last session (`prefix+Shift+l`) |
+| | | | `copy` — enter copy mode (`prefix+[`) |
 
 ### Common Workflows
 
-#### 1. Quick Window Switch
-```
-Hold SYM (right inner thumb)
-→ Tap top-right key (enters TMUX layer)
-→ Tap number (1-9, 0)
-→ Release
-```
-
-#### 2. Split & Navigate Development Layout
+#### Split & Navigate Development Layout
 ```
 Enter TMUX layer
-→ vsp (vertical split, creates side-by-side)
-→ l (move right)
-→ hsp (horizontal split right pane)
+→ vsplit (vertical split, creates side-by-side)
+→ next pane (prefix+o to move to new pane)
+→ hsplit (horizontal split right pane)
 → zoom (if you want to focus on code)
 ```
 
 Result: 3-pane layout perfect for code | terminal | logs
 
-#### 3. Focus Mode (Zoom)
+#### Focus Mode (Zoom)
 ```
 Enter TMUX layer → zoom
 ```
 Toggles current pane to fullscreen. Press again to restore layout.
 
-#### 4. Session Management
+#### Session Management
 ```
-Enter TMUX layer → sess
+Enter TMUX layer → browse sessions
 ```
 Opens interactive picker to switch between projects/sessions.
 
-#### 5. Precision Pane Resizing
-```
-Enter TMUX layer → resize
-→ hjkl (5-unit movements)
-→ HJKL (1-unit fine-tuning)
-→ Escape or Enter to finish
-```
-
-### Ergonomic Benefits
-
-1. **Home Row Optimization**: 80% of operations accessible without moving from home position
-2. **Spatial Consistency**: h/j/k/l maintains vim-like directional logic
-3. **Workflow Grouping**: Related operations clustered (splits near nav)
-4. **One-Tap Access**: No need to type prefix manually
-5. **Visual Feedback**: Cyan layer color provides clear mode indication
-6. **Reduced Cognitive Load**: No need to remember prefix combinations
-
 ### Integration with Tmux Config
 
-The layer works seamlessly with the tmux configuration at `~/.config/tmux/tmux.conf`:
+The layer works seamlessly with your tmux configuration:
 
 - **Prefix Key**: HOME key (configurable via `TMUX_PREFIX` define)
-- **Enhanced Resize Mode**: Supports both hjkl and arrow keys
-- **Session Persistence**: Auto-creates session on attach
-- **Path Awareness**: New windows/panes inherit current directory
-- **Visual Activity**: Monitors activity in other windows
-
-### Customization
 
 #### Changing the Prefix Key
 
-Edit `config/regret.keymap` line 35:
+Edit `config/regret.keymap`:
 ```c
 #define TMUX_PREFIX HOME
 ```
@@ -170,73 +188,9 @@ ZMK_MACRO(tmux_custom, bindings = <&kp TMUX_PREFIX &kp YOUR_KEY>;)
 
 Then add to the layer bindings in the `tmux_layer` section.
 
-## Default Layer (Dvorak-Based)
-
-```
-'  ,  .  p  y    f  g  c  r  l
-a  o  e  u  i    d  h  t  n  s
-;  q  j  k  x    b  m  w  v  z
-   BSPC NAV SYM SPACE
-```
-
-### Combos
-
-- **Brackets**: Vertical combos on home/top rows
-  - `o+,` = `[`, `e+.` = `{`, `u+p` = `(`
-  - `g+c` = `)`, `h+r` = `}`, `t+l` = `]`
-- **Shift**: `e+u` or `h+t` = sticky shift
-- **Escape**: `o+e+u` (3-key combo on left home)
-- **Return**: `h+t+n` (3-key combo on right home)
-- **Caps Word**: `'+l` (corners)
-- **Caps Lock**: `z+;` (bottom corners)
-- **System Layer**: Both inner thumbs together
-
-## Symbol Layer
-
-Access: Hold right inner thumb (SYM)
-
-```
--      *      -      -      ~    ^      -      EMJ   TMUX   `
--      *      =      _      $    #      MOD5   MOD6  MOD7   MOD8
-+      |      @      /      %    |>     \      &     ?      !
-```
-
-- **Top Right**: Emoji picker, Tmux layer access, backtick
-- **Home Row**: Math operators, modifiers
-- **Bottom**: Logic/programming symbols, hackpipe (`|> `)
-
-## Navigation Layer
-
-Access: Hold left inner thumb (NAV)
-
-```
--      swap   wswap  sshot  globe   TAB    HOME   UP     END    -
-MOD1   MOD2   MOD3   MOD4   BSPC    DEL    LEFT   DOWN   RIGHT  -
-Cmd+Z  Cmd+X  Cmd+C  Cmd+V  -       -      PGDN   -      PGUP   LOCK
-```
-
-- **Window Management**: App switcher (`swap`), window switcher (`wswap`)
-- **Cursor Keys**: Vim-style arrow placement + Home/End
-- **Editing**: Backspace, Delete, common shortcuts
-- **Modifiers**: MOD1-4 for chording
-
-## Number Layer
-
-Access: Hold both inner thumbs (SYM + NAV)
-
-```
-1     2     3     4     5      6     7     8     9     0
-MOD1  MOD2  MOD3  MOD4  F6     F7    MOD5  MOD6  MOD7  MOD8
-F1    F2    F3    F4    F5     F8    F9    F10   F11   F12
-```
-
-- **Numbers**: Top row 1-0
-- **Function Keys**: F1-F12 on bottom two rows
-- **Modifiers**: Available for function key chording
-
 ## System Layer
 
-Access: Press both outer thumbs together
+Access: Both outer thumbs combo (BSPC + SPACE)
 
 ```
 BOOT   GAME   -      -      -       RGB    PLAY   -      -      UNSTICK
@@ -252,29 +206,33 @@ MOD1   MOD2   MOD3   MOD4   -       PREV   VOL-   VOL+   NEXT   -
 
 ## Game Layer
 
-Access: Toggle from System layer
+Access: Toggle from System layer (top row, second key)
 
-QWERTY-style layout for gaming with dedicated arrow keys and common game bindings.
+QWERTY-style layout for gaming with dedicated arrow keys on right hand. Press top-right key to return to default layer.
 
 ## Platform Differences
 
 ### Mac (`CONFIG_SHIELD_REGRET_MAC`)
 - Globe key support
-- Cmd-based shortcuts
-- macOS media controls
+- Cmd-based shortcuts (Cmd+Z/X/C/V)
+- macOS screenshot (Ctrl+Cmd+Shift+4)
+- macOS emoji picker (Ctrl+Cmd+Space)
+- Screen lock (Ctrl+Cmd+Q)
+- MOD1-4: Ctrl, Alt, Cmd, Shift
 
 ### Windows (`CONFIG_SHIELD_REGRET_WINDOWS`)
-- Win key mappings
-- Alt-based shortcuts
-- Windows-specific media handling
+- Ctrl-based shortcuts (Ctrl+Z/X/C/V)
+- Windows screenshot (Win+Shift+S)
+- Windows emoji picker (Win+.)
+- Screen lock (Win+L)
+- MOD1-4: Win, Alt, Ctrl, Shift
 
 ## Building
 
-```bash
-# Build for specific platform
-west build -p -b nice_nano_v2 -- -DSHIELD=regret_mac
+Builds are automated via GitHub Actions on tag push. To build locally:
 
-# Or use build.yaml for automated builds
+```bash
+west build -p -b seeeduino_xiao_ble -- -DSHIELD=regret -DCONFIG_SHIELD_REGRET_MAC=y
 ```
 
 ## Configuration
@@ -294,30 +252,14 @@ Adjust based on your typing speed:
 
 ## Troubleshooting
 
-### Tmux Layer Issues
+**Tmux commands not working**: Ensure tmux prefix is set to HOME in your tmux config. Match `TMUX_PREFIX` define in keymap.
 
-**Problem**: Tmux commands not working
-- **Check**: Ensure tmux prefix is set to HOME in `~/.config/tmux/tmux.conf`
-- **Fix**: Match `TMUX_PREFIX` define in keymap to tmux config
+**Sticky keys stuck**: Use `unstick` from system layer (top-right), which taps all modifier keys to clear them.
 
-**Problem**: Wrong pane splits
-- **Remember**: `vsp` = vertical split = side-by-side (like `|`)
-- **Remember**: `hsp` = horizontal split = stacked (like `—`)
-
-### General Issues
-
-**Sticky keys stuck**: Press both shifts or use `unstick` from system layer
-
-**Layer not activating**: Check combo timing, ensure proper thumb key hold
-
-**RGB not changing**: Verify RGB is enabled in system layer
+**Layer not activating**: Check combo timing, ensure proper thumb key hold.
 
 ## Resources
 
 - [ZMK Documentation](https://zmk.dev/)
-- [Regret Keyboard](https://github.com/qmk/qmk_firmware/tree/master/keyboards/regret)
+- [Regret Keyboard](https://github.com/rschenk/regret)
 - [Tmux Documentation](https://github.com/tmux/tmux/wiki)
-
-## License
-
-This configuration is provided as-is for personal use.
