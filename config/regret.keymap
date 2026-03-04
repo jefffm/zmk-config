@@ -176,7 +176,7 @@
 		ZMK_MACRO(tmuxx,  bindings = <&kp TMUX_PREFIX &kp X>;)       // close pane
 		ZMK_MACRO(tmuxz,  bindings = <&kp TMUX_PREFIX &kp Z>;)       // zoom pane
 		ZMK_MACRO(tmuxo,  bindings = <&kp TMUX_PREFIX &kp O>;)       // cycle panes
-		ZMK_MACRO(tmuxcopy, bindings = <&kp TMUX_PREFIX &kp LBRACKET>;) // copy mode
+		ZMK_MACRO(tmuxcopy, bindings = <&kp TMUX_PREFIX &kp LBKT>;) // copy mode
 		ZMK_MACRO(tmuxlay, bindings = <&kp TMUX_PREFIX &kp SPACE>;)  // layout cycle
 		ZMK_MACRO(tmuxh,  bindings = <&kp TMUX_PREFIX &kp H>;)       // pane left
 		ZMK_MACRO(tmuxj,  bindings = <&kp TMUX_PREFIX &kp J>;)       // pane down
