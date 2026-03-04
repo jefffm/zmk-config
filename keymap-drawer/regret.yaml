@@ -31,10 +31,10 @@ layers:
   - W
   - V
   - Z
-  - {t: BSPC, h: sticky}
-  - '&layer_nav'
-  - '&layer_sym'
-  - SPACE
+  - {t: '$$mdi:backspace$$', h: sticky}
+  - {t: NAV, h: NAV}
+  - {t: SYM, h: SYM}
+  - $$mdi:keyboard-space$$
   sym:
   - ''
   - ''
@@ -52,44 +52,44 @@ layers:
   - _
   - $
   - '#'
-  - {t: RSHFT, h: sticky}
+  - {t: '$$mdi:apple-keyboard-shift$$', h: sticky}
   - {t: RCMD, h: sticky}
-  - {t: RALT, h: sticky}
-  - {t: RCTRL, h: sticky}
+  - {t: '$$mdi:apple-keyboard-option$$', h: sticky}
+  - {t: '$$mdi:apple-keyboard-control$$', h: sticky}
   - +
   - '|'
   - '@'
   - /
   - '%'
-  - '&hackpipe'
+  - '|>'
   - \
   - '&'
   - '?'
   - '!'
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
+  - {t: '$$mdi:transfer$$', type: trans}
+  - {t: '$$mdi:transfer$$', type: trans}
+  - {t: '$$mdi:transfer$$', type: trans}
+  - {t: '$$mdi:transfer$$', type: trans}
   nav:
   - ''
-  - '&swap'
-  - '&win_swap'
+  - $$mdi:swap-horizontal$$
+  - $$mdi:swap-horizontal-bold$$
   - Ctl+Gui+Sft+4
-  - GLOBE
-  - TAB
-  - HOME
-  - UP
-  - END
+  - $$mdi:earth$$
+  - $$mdi:keyboard-tab$$
+  - $$mdi:format-horizontal-align-left$$
+  - $$mdi:arrow-up$$
+  - $$mdi:format-horizontal-align-right$$
   - ''
-  - {t: LCTRL, h: sticky}
-  - {t: LALT, h: sticky}
+  - {t: '$$mdi:apple-keyboard-control$$', h: sticky}
+  - {t: '$$mdi:apple-keyboard-option$$', h: sticky}
   - {t: LCMD, h: sticky}
-  - {t: LSHFT, h: sticky}
-  - BSPC
-  - DELETE
-  - LEFT
-  - DOWN
-  - RIGHT
+  - {t: '$$mdi:apple-keyboard-shift$$', h: sticky}
+  - $$mdi:backspace$$
+  - $$mdi:backspace-reverse$$
+  - $$mdi:arrow-left$$
+  - $$mdi:arrow-down$$
+  - $$mdi:arrow-right$$
   - ''
   - Gui+Z
   - Gui+X
@@ -97,14 +97,14 @@ layers:
   - Gui+V
   - ''
   - ''
-  - PG DN
+  - $$mdi:chevron-double-down$$
   - ''
-  - PG UP
+  - $$mdi:chevron-double-up$$
   - Ctl+Gui+Q
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
+  - {t: '$$mdi:transfer$$', type: trans}
+  - {t: '$$mdi:transfer$$', type: trans}
+  - {t: '$$mdi:transfer$$', type: trans}
+  - {t: '$$mdi:transfer$$', type: trans}
   num:
   - '1'
   - '2'
@@ -116,16 +116,16 @@ layers:
   - '8'
   - '9'
   - '0'
-  - {t: LCTRL, h: sticky}
-  - {t: LALT, h: sticky}
+  - {t: '$$mdi:apple-keyboard-control$$', h: sticky}
+  - {t: '$$mdi:apple-keyboard-option$$', h: sticky}
   - {t: LCMD, h: sticky}
-  - {t: LSHFT, h: sticky}
+  - {t: '$$mdi:apple-keyboard-shift$$', h: sticky}
   - F6
   - F7
-  - {t: RSHFT, h: sticky}
+  - {t: '$$mdi:apple-keyboard-shift$$', h: sticky}
   - {t: RCMD, h: sticky}
-  - {t: RALT, h: sticky}
-  - {t: RCTRL, h: sticky}
+  - {t: '$$mdi:apple-keyboard-option$$', h: sticky}
+  - {t: '$$mdi:apple-keyboard-control$$', h: sticky}
   - F1
   - F2
   - F3
@@ -136,89 +136,89 @@ layers:
   - F10
   - F11
   - F12
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
+  - {t: '$$mdi:transfer$$', type: trans}
+  - {t: '$$mdi:transfer$$', type: trans}
+  - {t: '$$mdi:transfer$$', type: trans}
+  - {t: '$$mdi:transfer$$', type: trans}
   system:
-  - '&bootloader'
+  - $$mdi:progress-download$$
   - {t: game, h: toggle}
   - ''
   - ''
   - ''
   - RGB TOG
-  - PP
+  - $$mdi:play-pause$$
   - ''
   - ''
-  - '&unstick'
-  - LCTRL
-  - LALT
+  - $$mdi:restart$$
+  - $$mdi:apple-keyboard-control$$
+  - $$mdi:apple-keyboard-option$$
   - LCMD
-  - LSHFT
+  - $$mdi:apple-keyboard-shift$$
   - ''
-  - PREV
-  - VOL DN
-  - VOL UP
-  - NEXT
+  - $$mdi:skip-previous$$
+  - $$mdi:volume-minus$$
+  - $$mdi:volume-plus$$
+  - $$mdi:skip-next$$
   - ''
   - ''
-  - {t: BT, h: '0'}
-  - {t: BT, h: '1'}
-  - {t: BT, h: '2'}
+  - {t: '$$mdi:bluetooth-connect$$', h: '1'}
+  - {t: '$$mdi:bluetooth-connect$$', h: '2'}
+  - {t: '$$mdi:bluetooth-connect$$', h: '3'}
   - ''
-  - BT CLR
-  - {t: BT DISC, h: '2'}
-  - {t: BT DISC, h: '1'}
-  - {t: BT DISC, h: '0'}
+  - $$mdi:bluetooth-off$$
+  - {t: '$$mdi:bluetooth-off$$', h: '3'}
+  - {t: '$$mdi:bluetooth-off$$', h: '2'}
+  - {t: '$$mdi:bluetooth-off$$', h: '1'}
   - ''
   - {type: held}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
+  - {t: '$$mdi:transfer$$', type: trans}
+  - {t: '$$mdi:transfer$$', type: trans}
   - {type: held}
   tmux:
-  - '&tmuxc'
-  - '&tmuxren'
-  - '&tmuxwk'
-  - '&tmuxw'
-  - '&tmuxf'
-  - '&tmuxp'
-  - '&tmuxn'
-  - '&tmuxl'
-  - '&tmuxlay'
+  - {t: '$$mdi:tab-plus$$', h: new win}
+  - {t: '$$mdi:rename$$', h: rename}
+  - {t: '$$mdi:tab-remove$$', h: kill win}
+  - {t: '$$mdi:tab-search$$', h: browse}
+  - {t: '$$mdi:magnify$$', h: find}
+  - {t: '$$mdi:chevron-left$$', h: prev win}
+  - {t: '$$mdi:chevron-right$$', h: next win}
+  - {t: '$$mdi:swap-horizontal$$', h: last win}
+  - {t: '$$mdi:view-dashboard$$', h: layout}
   - {t: default, h: toggle}
-  - '&tmuxvsp'
-  - '&tmuxhsp'
-  - '&tmuxx'
-  - '&tmuxb'
-  - '&tmuxswp'
+  - {t: '$$mdi:arrow-split-vertical$$', h: vsplit}
+  - {t: '$$mdi:arrow-split-horizontal$$', h: hsplit}
+  - {t: '$$mdi:close$$', h: kill pane}
+  - {t: '$$mdi:arrow-expand$$', h: break}
+  - {t: '$$mdi:swap-vertical$$', h: swap}
   - ''
-  - '&tmuxo'
-  - '&tmuxpp'
-  - '&tmuxz'
-  - '&tmuxr'
-  - '&tmuxs'
-  - '&tmuxd'
+  - {t: '$$mdi:rotate-right$$', h: next pane}
+  - {t: '$$mdi:rotate-left$$', h: last pane}
+  - {t: '$$mdi:fullscreen$$', h: zoom}
+  - {t: '$$mdi:resize$$', h: resize}
+  - {t: '$$mdi:format-list-bulleted$$', h: sessions}
+  - {t: '$$mdi:logout$$', h: detach}
   - ''
   - ''
   - ''
-  - '&tmuxspv'
-  - '&tmuxsnt'
-  - '&tmuxll'
-  - '&tmuxcopy'
+  - {t: '$$mdi:chevron-left$$', h: prev ses}
+  - {t: '$$mdi:chevron-right$$', h: next ses}
+  - {t: '$$mdi:swap-horizontal$$', h: last ses}
+  - {t: '$$mdi:content-copy$$', h: copy}
   - ''
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
+  - {t: '$$mdi:transfer$$', type: trans}
+  - {t: '$$mdi:transfer$$', type: trans}
+  - {t: '$$mdi:transfer$$', type: trans}
+  - {t: '$$mdi:transfer$$', type: trans}
   game:
   - ''
   - Q
   - W
   - E
   - R
-  - LSHFT
-  - ENTER
-  - UP
+  - $$mdi:apple-keyboard-shift$$
+  - $$mdi:keyboard-return$$
+  - $$mdi:arrow-up$$
   - R
   - {t: default, h: toggle}
   - ''
@@ -227,9 +227,9 @@ layers:
   - D
   - F
   - ''
-  - LEFT
-  - DOWN
-  - RIGHT
+  - $$mdi:arrow-left$$
+  - $$mdi:arrow-down$$
+  - $$mdi:arrow-right$$
   - S
   - ''
   - Z
@@ -241,13 +241,13 @@ layers:
   - ''
   - ''
   - ''
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
+  - {t: '$$mdi:transfer$$', type: trans}
+  - {t: '$$mdi:transfer$$', type: trans}
+  - {t: '$$mdi:transfer$$', type: trans}
+  - {t: '$$mdi:transfer$$', type: trans}
 combos:
 - p: [0, 9]
-  k: '&caps_word'
+  k: $$mdi:alpha-w-box$$
   l: [default]
 - p: [1, 11]
   k: '['
@@ -268,16 +268,16 @@ combos:
   k: ']'
   l: [default, sym, nav, num, game, tmux]
 - p: [2, 3]
-  k: {t: LSHFT, h: sticky}
+  k: {t: '$$mdi:apple-keyboard-shift$$', h: sticky}
   l: [default, sym, nav, num, game, tmux]
 - p: [6, 7]
-  k: {t: RSHFT, h: sticky}
+  k: {t: '$$mdi:apple-keyboard-shift$$', h: sticky}
   l: [default, sym, nav, num, game, tmux]
 - p: [20, 29]
-  k: CAPSLOCK
+  k: $$mdi:caps-lock$$
   l: [default]
 - p: [11, 12, 13]
-  k: ESC
+  k: $$mdi:keyboard-esc$$
   l: [default]
 - p: [16, 17, 18]
   k: RET
@@ -286,6 +286,6 @@ combos:
   k: Gui+A
   l: [nav]
 - p: [30, 31]
-  k: '&layer_tmux'
+  k: {t: TMUX, h: TMUX}
 - p: [30, 33]
   k: system
