@@ -32,7 +32,7 @@
 
 // Tmux prefix key - change this if you change your tmux prefix
 #ifndef TMUX_PREFIX
-#define TMUX_PREFIX HOME
+#define TMUX_PREFIX GRAVE
 #endif
 
 // How long a key must be pressed to trigger Hold behavior
