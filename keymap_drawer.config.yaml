@@ -1,7 +1,6 @@
 draw_config:
   dark_mode: auto
-  separate_combo_diagrams: true
-  combo_diagrams_scale: 2
+  separate_combo_diagrams: false
 
 parse_config:
   mark_alternate_layer_activators: true
